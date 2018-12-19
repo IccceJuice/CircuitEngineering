@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindow">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -56,34 +56,31 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="513.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane>
-          <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
-              <font>
-                <Font size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
-          </children>
+        <AnchorPane prefHeight="513.0" prefWidth="222.0">
+               <children>
+                  <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="221.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="Add">
+                        <items>
+                              <MenuItem fx:id="btnAddResistor" mnemonicParsing="false" text="Resistor" />
+                          <MenuItem fx:id="btnAddBattery" mnemonicParsing="false" text="Battery" />
+                              <MenuItem fx:id="btnAddLamp" mnemonicParsing="false" text="Lamp" />
+                              <MenuItem fx:id="btnAddAmmeter" mnemonicParsing="false" text="Ammeter" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" onAction="#clearAll" text="Clear" />
+                      <Menu mnemonicParsing="false" onAction="#on" text="On" />
+                    </menus>
+                  </MenuBar>
+               </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
           <content>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
-              <children>
-                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-              </children>
-            </AnchorPane>
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0" />
           </content>
         </ScrollPane>
-        <AnchorPane>
-          <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-          </children>
-        </AnchorPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

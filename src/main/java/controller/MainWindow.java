@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import model.*;
 
@@ -36,5 +37,10 @@ public class MainWindow implements Initializable {
         graph.turnOn(lamp);
     }
 
-    
+
+    public void clearAll(ActionEvent actionEvent) {
+    }
+
+    public void on(ActionEvent actionEvent) {
+    }
 }
