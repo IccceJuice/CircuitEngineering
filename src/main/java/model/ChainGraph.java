@@ -43,17 +43,17 @@ public class ChainGraph implements Graph {
         this.batteryIsConnected = batteryIsConnected;
     }
 
-    public void turnOn(Vertex battery){
-        if (isReady(battery)){
+    public void turnOn(){
+        if (isReady(vertexList.getFirst())){
             boolean[] visited = new boolean[size];
-            DFS(visited, battery);
+            DFS(visited, vertexList.getFirst());
         }
     }
 
     public boolean[] DFS(boolean[] visited, Vertex vertex){
         visited[vertex.getID()] = true;
         vertex.draw();
-        LinkedList<Vertex> adjacentVertex = vertex.getVertexList();
+        LinkedList<Vertex> adjacentVertex = vertex.getPlusAdjacency();
         for (Vertex v: adjacentVertex){
             if(v!=null && !visited[v.getID()])
                 visited = DFS(visited, v);

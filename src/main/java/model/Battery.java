@@ -4,15 +4,11 @@ import java.util.LinkedList;
 
 public class Battery extends Vertex {
 
-    private double voltage = 0;
+    private double voltage = 12;
     private String name = "Battery";
-    private LinkedList<Vertex> vertexList;
     private boolean isConnected = false;
 
 
-    public Battery(LinkedList<Vertex> vertexList){
-        this.vertexList = vertexList;
-    }
 
     private boolean isConnected(){
         return isConnected;
@@ -29,4 +25,5 @@ public class Battery extends Vertex {
     public void draw() {
         System.out.println(name);
     }
+
 }

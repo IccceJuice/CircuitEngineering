@@ -4,9 +4,11 @@ import java.util.LinkedList;
 
 public abstract class Vertex {
 
+
     private boolean isIncluded = false;
     private double resistance = 0;
-    private LinkedList<Vertex> vertexList = new LinkedList<Vertex>();
+    private LinkedList<Vertex> minusAdjacency = new LinkedList<Vertex>();
+    private LinkedList<Vertex> plusAdjacency = new LinkedList<Vertex>();
     private int ID = -1;
     public String name;
 
@@ -33,12 +35,12 @@ public abstract class Vertex {
 
     abstract public void draw();
 
-    public LinkedList<Vertex> getVertexList(){
-        return vertexList;
+    public LinkedList<Vertex> getPlusAdjacency(){
+        return plusAdjacency;
     }
 
-    public void addAdjacentVertex(Vertex vertex){
-        vertexList.add(vertex);
+    public void addPlusAdjacentVertex(Vertex vertex){
+        plusAdjacency.add(vertex);
     }
 
     public int getID(){
@@ -49,4 +51,10 @@ public abstract class Vertex {
         this.ID = ID;
     }
 
+    public LinkedList<Vertex> getMinusAdjacency() {
+        return minusAdjacency;
+    }
+    public void addMinusAdjacentVertex(Vertex vertex) {
+        minusAdjacency.add(vertex);
+    }
 }

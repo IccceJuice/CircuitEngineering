@@ -7,6 +7,6 @@ public interface Graph {
 
     void setGraph(LinkedList<Vertex> vertexList);
     void addVertex(Vertex vertex);
-    void turnOn(Vertex first);
+    void turnOn();
     LinkedList<Vertex> getGraph();
 }
