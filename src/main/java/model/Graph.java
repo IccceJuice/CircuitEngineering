@@ -9,4 +9,5 @@ public interface Graph {
     void addVertex(Vertex vertex);
     void turnOn();
     LinkedList<Vertex> getGraph();
+    int size();
 }

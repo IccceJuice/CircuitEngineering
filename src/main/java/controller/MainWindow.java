@@ -1,24 +1,33 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.*;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainWindow implements Initializable {
 
 
-
+    private Stage mainStage;
     private Map<Vertex, Label> modelView;
     private static Graph graph;
 
@@ -36,11 +45,19 @@ public class MainWindow implements Initializable {
     @FXML
     private ImageView imgVoltmeter;
 
+    private Parent fxmlEdit;
+    private FXMLLoader fxmlLoader = new FXMLLoader();
+    private EditDialog editDialog;
+    private Stage editDialogStage;
+
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Image image = new Image("/elements/Bat2.png");
+        Image image = new Image("/elements/Battery.png");
         imgBattery.setImage(image);
-         image = new Image("/elements/Res.png");
+        image = new Image("/elements/Res.png");
         imgResistor.setImage(image);
         image = new Image("/elements/lampOff.png");
         imgLamp.setImage(image);
@@ -48,6 +65,14 @@ public class MainWindow implements Initializable {
         imgAmmeter.setImage(image);
         image = new Image("/elements/Voltmeter.png");
         imgVoltmeter.setImage(image);
+        try{
+            fxmlLoader.setLocation(getClass().getResource("/fxml/EditDialog.fxml"));
+            fxmlLoader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
+            fxmlEdit = fxmlLoader.load();
+            editDialog = fxmlLoader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void setGraph(Graph graphInit) {
@@ -102,18 +127,22 @@ public class MainWindow implements Initializable {
         String title = "";
         switch (clickedButton.getId()) {
             case "btnAddBattery":
-                Image image = new Image("/elements/Bat2.png");
-                ViewVertex viewVertex = new ViewBattery(image);
-                anchorPane.getChildren().addAll(viewVertex.getImageView());
-
-//                title = resourceBundle.getString("add");
-//                editDialogController.setTrack(new UITrack(), true);
-//                showDialog(title);
-//                if(editDialogController.getTrack() != null){
-//                    trackList.getTracks().add(editDialogController.getTrack());
-//                }
-//                tableSongsLibrary.refresh();
-//
+                Image image = new Image("/elements/Battery.png");
+                Battery battery = new Battery();
+                battery.setViewBattery(new ViewBattery(image));
+                anchorPane.getChildren().addAll(battery.getViewBattery().getImageView());
+                graph.addVertex(battery);
+                battery.getViewBattery().getImageView().setId("btnEdit");
+                battery.getViewBattery().getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (event.getClickCount() == 2){
+                            editDialog.setVertex(battery);
+                            showDialog("Edit");
+                        }
+                    }
+                });
+                System.out.println(battery.getParameter());
                 break;
 //            case "btnEdit":
 //                if (!trackIsSelected(selectedTrack)) {
@@ -152,5 +181,25 @@ public class MainWindow implements Initializable {
 //
 //    }
 
+
+    }
+    private void showDialog(String title) {
+        if (editDialogStage == null){
+            editDialogStage = new Stage();
+            editDialogStage.setTitle(title);
+            editDialogStage.setMinHeight(320);
+            editDialogStage.setMinWidth(300);
+            editDialogStage.setResizable(false);
+            editDialogStage.setScene(new Scene(fxmlEdit));
+            editDialogStage.initModality(Modality.WINDOW_MODAL);
+            editDialogStage.initOwner(mainStage);
+        }
+
+        editDialogStage.showAndWait();
+
+    }
+
+    public void setMainStage(Stage mainStage) {
+        this.mainStage = mainStage;
     }
 }

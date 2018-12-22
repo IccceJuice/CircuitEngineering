@@ -1,17 +1,28 @@
 package model;
 
+import controller.VertexView;
+
 import java.util.LinkedList;
 
 public abstract class Vertex {
 
-
+    private double parameter;
     private boolean isIncluded = false;
-    private double resistance = 0;
+    private double resistance = 1;
     private LinkedList<Vertex> minusAdjacency = new LinkedList<Vertex>();
     private LinkedList<Vertex> plusAdjacency = new LinkedList<Vertex>();
-    private int ID = -1;
+    private VertexID ID;
     public String name;
+    private VertexView vertexView;
 
+    public double getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(double parameter) {
+
+        this.parameter = parameter;
+    }
 
     public String getName() {
         return name;
@@ -44,11 +55,11 @@ public abstract class Vertex {
     }
 
     public int getID(){
-        return ID;
+        return ID.getID();
     }
 
     public void setID(int ID){
-        this.ID = ID;
+        this.ID.setID(ID);
     }
 
     public LinkedList<Vertex> getMinusAdjacency() {
@@ -56,5 +67,13 @@ public abstract class Vertex {
     }
     public void addMinusAdjacentVertex(Vertex vertex) {
         minusAdjacency.add(vertex);
+    }
+
+    public VertexView getVertexView() {
+        return vertexView;
+    }
+
+    public void setVertexView(VertexView vertexView) {
+        this.vertexView = vertexView;
     }
 }

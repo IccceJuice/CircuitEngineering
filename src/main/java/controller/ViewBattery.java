@@ -1,11 +1,9 @@
 package controller;
 
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
-public class ViewBattery extends ViewVertex {
+public class ViewBattery  {
     private double X = 0;
     private double Y = 0;
     private ImageView imageView;
@@ -19,7 +17,7 @@ public class ViewBattery extends ViewVertex {
         imageView.setVisible(true);
         imageView.setPreserveRatio(true);
         imageView.setPickOnBounds(true);
-        imageView.setOnMouseClicked(e -> {
+        imageView.setOnMousePressed(e -> {
             X = imageView.getTranslateX() - e.getSceneX();
             Y = imageView.getTranslateY() - e.getSceneY();
         });
@@ -27,9 +25,12 @@ public class ViewBattery extends ViewVertex {
             imageView.setTranslateX(X + e.getSceneX());
             imageView.setTranslateY(Y + e.getSceneY());
         });
-
     }
     public ImageView getImageView() {
         return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
     }
 }

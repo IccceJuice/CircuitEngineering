@@ -1,13 +1,14 @@
 package controller;
 
 import javafx.scene.image.ImageView;
+import model.Vertex;
 
-public abstract class ViewVertex {
-    private double X = 0;
-    private double Y = 0;
+
+public abstract class VertexView {
+    private double X;
+    private double Y;
     private ImageView imageView;
-
-
+    private Vertex vertex;
 
 
     public ImageView getImageView() {
@@ -31,5 +32,13 @@ public abstract class ViewVertex {
 
     public void setX(double x) {
         X = x;
+    }
+
+    public Vertex getVertex() {
+        return vertex;
+    }
+
+    public void setVertex(Vertex vertex) {
+        this.vertex = vertex;
     }
 }

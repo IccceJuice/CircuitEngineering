@@ -1,11 +1,11 @@
 package model;
 
 import java.util.LinkedList;
-import java.util.List;
+
 public class ChainGraph implements Graph {
 
     private int size;
-    private LinkedList<Vertex> vertexList;
+    private LinkedList <Vertex> vertexMap;
     private boolean batteryIsConnected;
 
 
@@ -13,7 +13,7 @@ public class ChainGraph implements Graph {
 
     public ChainGraph(){
         size = 0;
-        vertexList = null;
+        vertexMap = null;
     }
 
     public boolean isReady(Vertex battery) {
@@ -31,22 +31,23 @@ public class ChainGraph implements Graph {
     }
 
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
-    public List<Vertex> getVertexList() {
-        return vertexList;
+    public LinkedList <Vertex> getVertexMap() {
+        return vertexMap;
     }
+
 
     public void setBatteryIsConnected(boolean batteryIsConnected) {
         this.batteryIsConnected = batteryIsConnected;
     }
 
     public void turnOn(){
-        if (isReady(vertexList.getFirst())){
+        if (isReady(vertexMap.getFirst())){
             boolean[] visited = new boolean[size];
-            DFS(visited, vertexList.getFirst());
+            DFS(visited, vertexMap.getFirst());
         }
     }
 
@@ -62,15 +63,15 @@ public class ChainGraph implements Graph {
     }
 
     public void setGraph(LinkedList<Vertex> vertexList) {
-        this.vertexList = vertexList;
+        this.vertexMap = vertexList;
     }
 
     public void addVertex(Vertex vertex) {
-        vertexList.add(vertex);
+        vertexMap.add(vertex);
         size++;
     }
 
     public LinkedList<Vertex> getGraph() {
-        return vertexList;
+        return vertexMap;
     }
 }
