@@ -87,7 +87,7 @@
                         <ImageView fx:id="imgLamp" fitHeight="56.0" fitWidth="56.0" onMouseDragEntered="#addBattery" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button layoutX="78.0" layoutY="170.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddResistor" layoutX="78.0" layoutY="170.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgResistor" fitHeight="56.0" fitWidth="56.0" onMouseDragEntered="#addBattery" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
