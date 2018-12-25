@@ -1,4 +1,4 @@
-package controller;
+package controller.VIew;
 
 import javafx.scene.image.ImageView;
 import model.Vertex;
@@ -41,4 +41,6 @@ public abstract class VertexView {
     public void setVertex(Vertex vertex) {
         this.vertex = vertex;
     }
+
+
 }

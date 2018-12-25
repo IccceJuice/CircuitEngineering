@@ -1,6 +1,5 @@
 package model;
 
-import java.util.LinkedList;
 
 public class Ammeter extends Vertex {
 

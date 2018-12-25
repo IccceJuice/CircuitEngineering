@@ -1,13 +1,14 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.List;
+import controller.VIew.VertexView;
+
+import java.util.*;
 
 public interface Graph {
 
-    void setGraph(LinkedList<Vertex> vertexList);
-    void addVertex(Vertex vertex);
+    void setGraph(ArrayList<Vertex> vertexMap);
+    void addVertex( Vertex vertex);
     void turnOn();
-    LinkedList<Vertex> getGraph();
+    ArrayList<Vertex> getGraph();
     int size();
 }

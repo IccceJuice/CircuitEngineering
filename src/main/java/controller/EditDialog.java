@@ -42,6 +42,8 @@ public class EditDialog implements Initializable{
         if (!checkValues()) return;
         vertex.setParameter(Double.parseDouble(parameterTF.getText()));
         vertex.setResistance(Double.parseDouble(resistanceTF.getText()));
+        //vertex.addPlusAdjacentVertex(Integer.parseInt(toTF.getText()));
+
         closeAction(actionEvent);
     }
 

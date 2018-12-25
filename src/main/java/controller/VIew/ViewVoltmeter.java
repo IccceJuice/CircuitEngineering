@@ -1,19 +1,19 @@
-package controller;
+package controller.VIew;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ViewBattery  {
+public class ViewVoltmeter extends VertexView {
     private double X = 0;
     private double Y = 0;
     private ImageView imageView;
 
-    ViewBattery(Image image){
+    public ViewVoltmeter(Image image){
         imageView = new ImageView(image);
         imageView.setFitWidth(56);
         imageView.setFitHeight(56);
         imageView.setTranslateX(30);
-        imageView.setTranslateY(80);
+        imageView.setTranslateY(440);
         imageView.setVisible(true);
         imageView.setPreserveRatio(true);
         imageView.setPickOnBounds(true);

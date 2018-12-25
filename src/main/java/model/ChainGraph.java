@@ -1,11 +1,13 @@
 package model;
 
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ChainGraph implements Graph {
 
     private int size;
-    private LinkedList <Vertex> vertexMap;
+    private ArrayList<Vertex> vertexMap;
     private boolean batteryIsConnected;
 
 
@@ -35,22 +37,19 @@ public class ChainGraph implements Graph {
         return size;
     }
 
-    public LinkedList <Vertex> getVertexMap() {
-        return vertexMap;
-    }
-
 
     public void setBatteryIsConnected(boolean batteryIsConnected) {
         this.batteryIsConnected = batteryIsConnected;
     }
 
     public void turnOn(){
-        if (isReady(vertexMap.getFirst())){
-            boolean[] visited = new boolean[size];
-            DFS(visited, vertexMap.getFirst());
-        }
+//        if (isReady(vertexMap.getFirst())){
+//            boolean[] visited = new boolean[size];
+//            DFS(visited, vertexMap.getFirst());
+//        }
     }
 
+    //todo DONT TOUCH
     public boolean[] DFS(boolean[] visited, Vertex vertex){
         visited[vertex.getID()] = true;
         vertex.draw();
@@ -62,16 +61,16 @@ public class ChainGraph implements Graph {
         return visited;
     }
 
-    public void setGraph(LinkedList<Vertex> vertexList) {
+    public void setGraph(ArrayList<Vertex> vertexList) {
         this.vertexMap = vertexList;
     }
 
-    public void addVertex(Vertex vertex) {
+    public void addVertex( Vertex vertex) {
         vertexMap.add(vertex);
         size++;
     }
 
-    public LinkedList<Vertex> getGraph() {
+    public ArrayList<Vertex> getGraph() {
         return vertexMap;
     }
 }
