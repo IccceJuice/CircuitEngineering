@@ -19,6 +19,10 @@
         <version>2.4</version>
         <configuration>
 
+        <properties>
+  			<maven.compiler.source>1.8</maven.compiler.source>
+  			<maven.compiler.target>1.8</maven.compiler.target>
+		</properties>
           <archive>
             <manifest>
               <mainClass>start.Main</mainClass>

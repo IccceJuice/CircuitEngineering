@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditDialog">
    <children>
-      <Label fx:id="parameter" layoutX="23.0" layoutY="29.0" text="%parameter">
+      <Label fx:id="parameter" layoutX="23.0" layoutY="29.0" text="Parameter">
          <opaqueInsets>
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
@@ -33,7 +33,7 @@
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="ResistanceTF" layoutX="120.0" layoutY="75.0">
+      <TextField fx:id="resistanceTF" layoutX="120.0" layoutY="75.0">
          <opaqueInsets>
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
@@ -48,7 +48,7 @@
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
       </TextField>
-      <Button fx:id="btnCancel" cancelButton="true" layoutX="183.0" layoutY="237.0" mnemonicParsing="false" text="Cancel" />
-      <Button fx:id="btnOk" defaultButton="true" layoutX="128.0" layoutY="237.0" mnemonicParsing="false" text="Ok" />
+      <Button fx:id="btnCancel" cancelButton="true" layoutX="183.0" layoutY="237.0" mnemonicParsing="false" onAction="#closeAction" text="Cancel" />
+      <Button fx:id="btnOk" defaultButton="true" layoutX="128.0" layoutY="237.0" mnemonicParsing="false" onAction="#actionSave" text="Ok" />
    </children>
 </AnchorPane>

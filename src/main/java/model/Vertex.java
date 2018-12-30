@@ -1,6 +1,6 @@
 package model;
 
-import controller.VIew.VertexView;
+import controller.VertexView;
 
 import java.util.LinkedList;
 

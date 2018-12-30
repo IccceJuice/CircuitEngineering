@@ -1,7 +1,5 @@
 package model;
 
-import controller.VIew.VertexView;
-
 import java.util.*;
 
 public interface Graph {

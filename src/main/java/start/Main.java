@@ -1,7 +1,6 @@
 package start;
 
 import controller.MainController;
-import controller.VIew.VertexView;
 import model.ChainGraph;
 import model.Graph;
 import model.Vertex;

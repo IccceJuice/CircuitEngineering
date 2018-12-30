@@ -1,4 +1,4 @@
-package controller.VIew;
+package controller;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,7 +14,7 @@ public class VertexView {
     private ImageView imageView;
     private Label label;
 
-    public VertexView(double Y, Image image, String text){
+    public VertexView(double offsetX, double Y, double offsetY, Image image, String text){
         imageView = new ImageView(image);
         label = new Label(text);
         imageView.setFitWidth(56);
@@ -25,8 +25,8 @@ public class VertexView {
         imageView.setPreserveRatio(true);
         imageView.setPickOnBounds(true);
         label.setMinSize(20, 12);
-        label.setTranslateX(45);
-        label.setTranslateY(Y + 35);
+        label.setTranslateX(30 + offsetX);
+        label.setTranslateY(Y + offsetY);
         label.setVisible(true);
         label.setPickOnBounds(true);
         imageView.setOnMousePressed(e -> {

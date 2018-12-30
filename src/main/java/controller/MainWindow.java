@@ -1,6 +1,5 @@
 package controller;
 
-import controller.VIew.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,29 +8,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MainWindow implements Initializable {
 
 
     private Stage mainStage;
-    private Map<Vertex, Label> modelView;
     private static Graph graph;
 
     @FXML
@@ -112,17 +106,19 @@ public class MainWindow implements Initializable {
         switch (clickedButton.getId()) {
             case "btnAddBattery":
                 image = new Image("/elements/Battery.png");
-                VertexView viewBattery = new ViewBattery(image);
+                VertexView viewBattery = new VertexView(47, 80, 20, image, "");
                 Battery battery = new Battery();
                 battery.setVertexView(viewBattery);
                 graph.addVertex(battery);
                 battery.setID(graph.size());
+                viewBattery.setTextLabel("B (" + graph.size() + ")");
                 anchorPane.getChildren().add(viewBattery.getImageView());
+                anchorPane.getChildren().add(viewBattery.getLabel());
                 viewBattery.getImageView().setId("btnEdit");
                 viewBattery.getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if (event.getClickCount() == 2){
+                        if (event.getClickCount() == 2) {
                             editDialog.setVertex(battery);
                             showDialog("Edit");
                             System.out.println(battery.getParameter());
@@ -134,17 +130,19 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddResistor":
                 image = new Image("/elements/Res.png");
-                VertexView viewResistor = new ViewResistor(image);
+                VertexView viewResistor = new VertexView(15, 170, 35, image, "");
                 Resistor resistor = new Resistor();
                 resistor.setVertexView(viewResistor);
-                graph.addVertex( resistor);
+                graph.addVertex(resistor);
                 resistor.setID(graph.size());
+                viewResistor.setTextLabel("R (" + graph.size() + ")");
                 anchorPane.getChildren().add(viewResistor.getImageView());
+                anchorPane.getChildren().add(viewResistor.getLabel());
                 viewResistor.getImageView().setId("btnEdit");
                 viewResistor.getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if (event.getClickCount() == 2){
+                        if (event.getClickCount() == 2) {
                             editDialog.setVertex(resistor);
                             showDialog("Edit");
 //                            for (int i = 0; i < resistor.getNumberPlusAdjacent().length; ++i){
@@ -172,17 +170,19 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddLamp":
                 image = new Image("/elements/lampOff.png");
-                VertexView viewLamp = new ViewLamp(image);
+                VertexView viewLamp = new VertexView(16, 260, 42, image, "");
                 Lamp lamp = new Lamp();
                 lamp.setVertexView(viewLamp);
                 graph.addVertex(lamp);
                 lamp.setID(graph.size());
+                viewLamp.setTextLabel("L (" + graph.size() + ")");
+                anchorPane.getChildren().add(viewLamp.getLabel());
                 anchorPane.getChildren().add(viewLamp.getImageView());
                 viewLamp.getImageView().setId("btnEdit");
                 viewLamp.getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if (event.getClickCount() == 2){
+                        if (event.getClickCount() == 2) {
                             editDialog.setVertex(lamp);
                             showDialog("Edit");
                             System.out.println(lamp.getParameter());
@@ -194,17 +194,19 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddAmmeter":
                 image = new Image("/elements/Ammeter.png");
-                VertexView viewAmmeter = new ViewAmmeter(image);
+                VertexView viewAmmeter = new VertexView(15, 350, 35, image, "");
                 Ammeter ammeter = new Ammeter();
                 ammeter.setVertexView(viewAmmeter);
                 graph.addVertex(ammeter);
                 ammeter.setID(graph.size());
+                viewAmmeter.setTextLabel("A (" + graph.size() + ")");
                 anchorPane.getChildren().add(viewAmmeter.getImageView());
+                anchorPane.getChildren().add(viewAmmeter.getLabel());
                 viewAmmeter.getImageView().setId("btnEdit");
                 viewAmmeter.getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if (event.getClickCount() == 2){
+                        if (event.getClickCount() == 2) {
                             editDialog.setVertex(ammeter);
                             showDialog("Edit");
                             System.out.println(ammeter.getParameter());
@@ -216,17 +218,19 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddVoltmeter":
                 image = new Image("/elements/Voltmeter.png");
-                VertexView viewVoltmeter = new ViewVoltmeter(image);
+                VertexView viewVoltmeter = new VertexView(15, 440, 35, image, "");
                 Voltmeter voltmeter = new Voltmeter();
                 voltmeter.setVertexView(viewVoltmeter);
                 graph.addVertex(voltmeter);
                 voltmeter.setID(graph.size());
+                viewVoltmeter.setTextLabel("V (" + graph.size() + ")");
                 anchorPane.getChildren().add(viewVoltmeter.getImageView());
+                anchorPane.getChildren().add(viewVoltmeter.getLabel());
                 viewVoltmeter.getImageView().setId("btnEdit");
                 viewVoltmeter.getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if (event.getClickCount() == 2){
+                        if (event.getClickCount() == 2) {
                             editDialog.setVertex(voltmeter);
                             showDialog("Edit");
                             System.out.println(voltmeter.getParameter());
@@ -236,35 +240,8 @@ public class MainWindow implements Initializable {
                 System.out.println(voltmeter.getParameter());
                 System.out.println(voltmeter.getID());
                 break;
-//            case "btnSelectDel":
-//                if (!trackIsSelected(selectedTrack)) {
-//                    return;
 
-//                }
-//                title = resourceBundle.getString("delete");
-//                trackList.delete(selectedTrack);
-//                tableSongsLibrary.refresh();
-//                break;
-//        }
-//        Vertex battery = new Battery(new LinkedList<Vertex>());
-//        graph.addVertex(battery);
-//        int ID = graph.getGraph().indexOf(battery);
-//        battery.setID(ID);
-//        System.out.println(ID);
-//        btnBattery.setOnMousePressed(e -> {
-//            battery.setX(btnBattery.getTranslateX() - e.getSceneX());
-//            battery.setY(btnBattery.getTranslateY() - e.getSceneY());
-//        });
-//        btnBattery.setOnMouseDragged(e -> {
-//            btnBattery.setTranslateX(battery.getX() + e.getSceneX());
-//            btnBattery.setTranslateY(battery.getY() + e.getSceneY());
-//        });
         }
-//    public void btnAddBattery(MouseDragEvent mouseDragEvent) {
-//
-//    }
-
-
     }
     private void showDialog(String title) {
         if (editDialogStage == null){

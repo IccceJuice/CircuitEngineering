@@ -7,13 +7,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Graph;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class MainController extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/fxml/MainWindow.fxml"));
+        fxmlLoader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
+        Parent fxmlMain = fxmlLoader.load();
+        MainWindow mainWindow = fxmlLoader.getController();
+        mainWindow.setMainStage(primaryStage);
         primaryStage.setTitle("Circuit Engineering For Kids");
-        primaryStage.setScene(new Scene(root, 900, 600));
+        primaryStage.setScene(new Scene(fxmlMain, 900, 600));
         primaryStage.show();
     }
     public static void main(String[] args, Graph graph) {
