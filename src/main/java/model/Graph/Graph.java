@@ -1,4 +1,6 @@
-package model;
+package model.Graph;
+
+import model.Vertex.Vertex;
 
 import java.util.*;
 

@@ -1,5 +1,7 @@
-package model;
+package model.Graph;
 
+
+import model.Vertex.Vertex;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,19 +20,19 @@ public class ChainGraph implements Graph {
         vertexMap = null;
     }
 
-    public boolean isReady(Vertex battery) {
-        boolean[] visited = new boolean[size];
-        visited = DFS(visited, battery);
-        for (int i = 0; i < size; ++i){
-            if (visited[i] != true){
-                return false;
-            }
-        }
-        if(batteryIsConnected) {
-            return true;
-        }
-        return false;
-    }
+//    public boolean isReady(Vertex battery) {
+//        boolean[] visited = new boolean[size];
+//        visited = DFS(visited, battery);
+//        for (int i = 0; i < size; ++i){
+//            if (visited[i] != true){
+//                return false;
+//            }
+//        }
+//        if(batteryIsConnected) {
+//            return true;
+//        }
+//        return false;
+//    }
 
 
     public int size() {
@@ -50,16 +52,16 @@ public class ChainGraph implements Graph {
     }
 
     //todo DONT TOUCH
-    public boolean[] DFS(boolean[] visited, Vertex vertex){
-        visited[vertex.getID()] = true;
-        vertex.draw();
-        LinkedList<Vertex> adjacentVertex = vertex.getPlusAdjacency();
-        for (Vertex v: adjacentVertex){
-            if(v!=null && !visited[v.getID()])
-                visited = DFS(visited, v);
-        }
-        return visited;
-    }
+//    public boolean[] DFS(boolean[] visited, Vertex vertex){
+//        visited[vertex.getID()] = true;
+//        vertex.draw();
+//        LinkedList<Vertex> adjacentVertex = vertex.getPlusAdjacency();
+//        for (Vertex v: adjacentVertex){
+//            if(v!=null && !visited[v.getID()])
+//                visited = DFS(visited, v);
+//        }
+//        return visited;
+//    }
 
     public void setGraph(ArrayList<Vertex> vertexList) {
         this.vertexMap = vertexList;

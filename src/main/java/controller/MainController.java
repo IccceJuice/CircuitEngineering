@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Graph;
+import model.Graph.Graph;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

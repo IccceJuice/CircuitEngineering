@@ -1,6 +1,4 @@
-package model;
-
-import java.util.LinkedList;
+package model.Vertex;
 
 public class Lamp extends Vertex {
 
@@ -13,5 +11,10 @@ public class Lamp extends Vertex {
 
     public void draw() {
         System.out.println(name);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -1,26 +1,29 @@
-package model;
+package model.Vertex;
 
-import java.util.LinkedList;
-import java.util.List;
 
-public class Resistor extends Vertex {
 
-    private boolean isConnected;
-    private String name = "Resistor";
+public class Battery extends Vertex {
+
+    private double voltage = 12;
+    private String name = "Battery";
+    private boolean isConnected = false;
+
+
 
     private boolean isConnected(){
         return isConnected;
     }
 
     public double getParameter() {
-        return 0;
+        return voltage;
     }
 
     public void setParameter(double voltage) {
-
+        this.voltage = voltage;
     }
 
     public void draw() {
         System.out.println(name);
     }
+
 }

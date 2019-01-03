@@ -1,9 +1,9 @@
 package start;
 
 import controller.MainController;
-import model.ChainGraph;
-import model.Graph;
-import model.Vertex;
+import model.Graph.ChainGraph;
+import model.Graph.Graph;
+import model.Vertex.Vertex;
 
 import java.util.*;
 

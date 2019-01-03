@@ -1,4 +1,4 @@
-package model;
+package model.Vertex;
 
 
 public class Link  {

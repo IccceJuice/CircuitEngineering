@@ -6,7 +6,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
-import model.Vertex;
+import model.Graph.Graph;
+import model.Vertex.Vertex;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,7 @@ public class EditDialog implements Initializable{
     private TextField fromTF;
     @FXML
     private TextField toTF;
+    private Graph graph;
 
 
     @Override
@@ -42,12 +44,14 @@ public class EditDialog implements Initializable{
         if (!checkValues()) return;
         vertex.setParameter(Double.parseDouble(parameterTF.getText()));
         vertex.setResistance(Double.parseDouble(resistanceTF.getText()));
-        //vertex.addPlusAdjacentVertex(Integer.parseInt(toTF.getText()));
-
+        vertex.addNextVertex(graph, Integer.parseInt(toTF.getText()) - 1);
+        System.out.println(vertex.getNext().getName());
+        vertex.addPrevVertex(graph, Integer.parseInt(fromTF.getText()) - 1);
         closeAction(actionEvent);
     }
 
-    public void setVertex(Vertex vertex) {
+    public void setValues(Graph graph, Vertex vertex) {
+        this.graph = graph;
         this.vertex = vertex;
         parameterTF.setText(String.valueOf(vertex.getParameter()));
         resistanceTF.setText(String.valueOf(vertex.getResistance()));
