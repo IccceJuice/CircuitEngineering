@@ -89,9 +89,9 @@
                         <ImageView fx:id="imgBattery" fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddPoint" layoutX="127.0" layoutY="322.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddConnector" layoutX="127.0" layoutY="322.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
-                        <ImageView fx:id="imgPoint" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgConnector" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                </children>

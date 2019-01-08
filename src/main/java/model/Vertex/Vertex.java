@@ -1,9 +1,7 @@
 package model.Vertex;
 
-import controller.VertexView;
+import controller.ElementView;
 import model.Graph.Graph;
-
-import java.util.LinkedList;
 
 public abstract class Vertex {
 
@@ -13,8 +11,8 @@ public abstract class Vertex {
     private Vertex next;
     private Vertex prev;
     public String name;
-    private VertexView vertexView;
-    private int ID;
+    private ElementView elementView;
+    private int ID = -1;
 
     public double getParameter() {
         return parameter;
@@ -72,15 +70,11 @@ public abstract class Vertex {
 //        this.plusAdjacency = plusAdjacency;
 //    }
 
-    public void addNextVertex(Graph graph, int numberOfVertex){
-        Vertex nextVertex = graph.getGraph().get(numberOfVertex);
-        next = nextVertex;
-        nextVertex.setPrev(this);
+    public void setNext(Graph graph, int numberOfVertex){
+        next = graph.getVertices().get(numberOfVertex);
     }
-    public void addPrevVertex(Graph graph, int numberOfVertex){
-        Vertex prevVertex = graph.getGraph().get(numberOfVertex);
-        prev = prevVertex;
-        prevVertex.setNext(this);
+    public void setPrev(Graph graph, int numberOfVertex){
+        prev = graph.getVertices().get(numberOfVertex);
     }
 
 //    public void setMinusAdjacency(LinkedList<Vertex> minusAdjacency) {
@@ -106,11 +100,11 @@ public abstract class Vertex {
 //        return numberPlusAdjacent;
 //    }
 
-    public VertexView getVertexView() {
-        return vertexView;
+    public ElementView getElementView() {
+        return elementView;
     }
 
-    public void setVertexView(VertexView vertexView) {
-        this.vertexView = vertexView;
+    public void setElementView(ElementView elementView) {
+        this.elementView = elementView;
     }
 }

@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class VertexView {
+public class ElementView {
     private double imageX = 0;
     private double imageY = 0;
     private double labelX = 0;
@@ -13,7 +13,7 @@ public class VertexView {
     private ImageView imageView;
     private Label label;
 
-    public VertexView(double offsetX, double Y, double offsetY, Image image, String text){
+    public ElementView(double offsetX, double Y, double offsetY, Image image, String text){
         imageView = new ImageView(image);
         label = new Label(text);
         imageView.setFitWidth(56);

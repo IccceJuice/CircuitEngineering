@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Edge;
 import model.Graph.Graph;
 import model.Vertex.*;
 
@@ -43,13 +44,21 @@ public class MainWindow implements Initializable {
     @FXML
     private ImageView imgVoltmeter;
     @FXML
-    private ImageView imgPoint;
+    private ImageView imgConnector;
 
+    private FXMLLoader fxmlLoader = new FXMLLoader();
+    private FXMLLoader fxmlLoaderCnctr = new FXMLLoader();
+    private FXMLLoader fxmlLoaderEdge = new FXMLLoader();
 
     private Parent fxmlEdit;
-    private FXMLLoader fxmlLoader = new FXMLLoader();
     private EditDialog editDialog;
     private Stage editDialogStage;
+
+    private Parent fxmlCnctrEdit;
+    private ConnectorEditDialog connectorEditDialog;
+
+    private Parent fxmlEdgeEdit;
+    private EdgeEditDialog edgeEditDialog;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,12 +67,28 @@ public class MainWindow implements Initializable {
         imgLamp.setImage(new Image("/elements/lampOff.png"));
         imgAmmeter.setImage(new Image("/elements/Ammeter.png"));
         imgVoltmeter.setImage(new Image("/elements/Voltmeter.png"));
-        imgPoint.setImage(new Image("/elements/dot.png"));
+        imgConnector.setImage(new Image("/elements/dot.png"));
         try{
             fxmlLoader.setLocation(getClass().getResource("/fxml/EditDialog.fxml"));
             fxmlLoader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
             fxmlEdit = fxmlLoader.load();
             editDialog = fxmlLoader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try{
+            fxmlLoaderCnctr.setLocation(getClass().getResource("/fxml/ConnectorEditDialog.fxml"));
+            fxmlLoaderCnctr.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
+            fxmlCnctrEdit = fxmlLoaderCnctr.load();
+            connectorEditDialog = fxmlLoaderCnctr.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try{
+            fxmlLoaderEdge.setLocation(getClass().getResource("/fxml/EdgeEditDialog.fxml"));
+            fxmlLoaderEdge.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
+            fxmlEdgeEdit = fxmlLoaderEdge.load();
+            edgeEditDialog = fxmlLoaderEdge.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,12 +116,12 @@ public class MainWindow implements Initializable {
         switch (clickedButton.getId()) {
             case "btnAddBattery":
                 image = new Image("/elements/Battery.png");
-                VertexView viewBattery = new VertexView(47, 50, 20, image, "");
+                ElementView viewBattery = new ElementView(47, 50, 20, image, "");
                 Battery battery = new Battery();
-                battery.setVertexView(viewBattery);
+                battery.setElementView(viewBattery);
                 graph.addVertex(battery);
-                battery.setID(graph.size());
-                viewBattery.setTextLabel("B (" + graph.size() + ")");
+                battery.setID(graph.vertexSize());
+                viewBattery.setTextLabel("B (" + graph.vertexSize() + ")");
                 anchorPane.getChildren().add(viewBattery.getImageView());
                 anchorPane.getChildren().add(viewBattery.getLabel());
                 viewBattery.getImageView().setId("btnEdit");
@@ -105,7 +130,7 @@ public class MainWindow implements Initializable {
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2) {
                             editDialog.setValues(graph, battery);
-                            showDialog("Edit");
+                            showDialog("Edit", fxmlEdit);
                             System.out.println(battery.getParameter());
                         }
                     }
@@ -115,12 +140,12 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddResistor":
                 image = new Image("/elements/Res.png");
-                VertexView viewResistor = new VertexView(15, 140, 35, image, "");
+                ElementView viewResistor = new ElementView(15, 140, 35, image, "");
                 Resistor resistor = new Resistor();
-                resistor.setVertexView(viewResistor);
+                resistor.setElementView(viewResistor);
                 graph.addVertex(resistor);
-                resistor.setID(graph.size());
-                viewResistor.setTextLabel("R (" + graph.size() + ")");
+                resistor.setID(graph.vertexSize());
+                viewResistor.setTextLabel("R (" + graph.vertexSize() + ")");
                 anchorPane.getChildren().add(viewResistor.getImageView());
                 anchorPane.getChildren().add(viewResistor.getLabel());
                 viewResistor.getImageView().setId("btnEdit");
@@ -129,7 +154,7 @@ public class MainWindow implements Initializable {
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2) {
                             editDialog.setValues(graph, resistor);
-                            showDialog("Edit");
+                            showDialog("Edit", fxmlEdit);
                         }
                     }
                 });
@@ -139,12 +164,12 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddLamp":
                 image = new Image("/elements/lampOff.png");
-                VertexView viewLamp = new VertexView(16, 230, 42, image, "");
+                ElementView viewLamp = new ElementView(16, 230, 42, image, "");
                 Lamp lamp = new Lamp();
-                lamp.setVertexView(viewLamp);
+                lamp.setElementView(viewLamp);
                 graph.addVertex(lamp);
-                lamp.setID(graph.size());
-                viewLamp.setTextLabel("L (" + graph.size() + ")");
+                lamp.setID(graph.vertexSize());
+                viewLamp.setTextLabel("L (" + graph.vertexSize() + ")");
                 anchorPane.getChildren().add(viewLamp.getLabel());
                 anchorPane.getChildren().add(viewLamp.getImageView());
                 viewLamp.getImageView().setId("btnEdit");
@@ -153,7 +178,7 @@ public class MainWindow implements Initializable {
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2) {
                             editDialog.setValues(graph, lamp);
-                            showDialog("Edit");
+                            showDialog("Edit", fxmlEdit);
                             System.out.println(lamp.getParameter());
                         }
                     }
@@ -163,12 +188,12 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddAmmeter":
                 image = new Image("/elements/Ammeter.png");
-                VertexView viewAmmeter = new VertexView(15, 320, 35, image, "");
+                ElementView viewAmmeter = new ElementView(15, 320, 35, image, "");
                 Ammeter ammeter = new Ammeter();
-                ammeter.setVertexView(viewAmmeter);
+                ammeter.setElementView(viewAmmeter);
                 graph.addVertex(ammeter);
-                ammeter.setID(graph.size());
-                viewAmmeter.setTextLabel("A (" + graph.size() + ")");
+                ammeter.setID(graph.vertexSize());
+                viewAmmeter.setTextLabel("A (" + graph.vertexSize() + ")");
                 anchorPane.getChildren().add(viewAmmeter.getImageView());
                 anchorPane.getChildren().add(viewAmmeter.getLabel());
                 viewAmmeter.getImageView().setId("btnEdit");
@@ -177,7 +202,7 @@ public class MainWindow implements Initializable {
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2) {
                             editDialog.setValues(graph, ammeter);
-                            showDialog("Edit");
+                            showDialog("Edit", fxmlEdit);
                             System.out.println(ammeter.getParameter());
                         }
                     }
@@ -187,12 +212,12 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddVoltmeter":
                 image = new Image("/elements/Voltmeter.png");
-                VertexView viewVoltmeter = new VertexView(15, 410, 35, image, "");
+                ElementView viewVoltmeter = new ElementView(15, 410, 35, image, "");
                 Voltmeter voltmeter = new Voltmeter();
-                voltmeter.setVertexView(viewVoltmeter);
+                voltmeter.setElementView(viewVoltmeter);
                 graph.addVertex(voltmeter);
-                voltmeter.setID(graph.size());
-                viewVoltmeter.setTextLabel("V (" + graph.size() + ")");
+                voltmeter.setID(graph.vertexSize());
+                viewVoltmeter.setTextLabel("V (" + graph.vertexSize() + ")");
                 anchorPane.getChildren().add(viewVoltmeter.getImageView());
                 anchorPane.getChildren().add(viewVoltmeter.getLabel());
                 viewVoltmeter.getImageView().setId("btnEdit");
@@ -201,7 +226,7 @@ public class MainWindow implements Initializable {
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2) {
                             editDialog.setValues(graph, voltmeter);
-                            showDialog("Edit");
+                            showDialog("Edit", fxmlEdit);
                             System.out.println(voltmeter.getParameter());
                         }
                     }
@@ -209,16 +234,16 @@ public class MainWindow implements Initializable {
                 System.out.println(voltmeter.getParameter());
                 System.out.println(voltmeter.getID());
                 break;
-            case "btnAddPoint":
+            case "btnAddConnector":
                 image = new Image("/elements/dot.png");
-                VertexView viewPoint = new VertexView(15, 500, 35, image, "");
+                ElementView viewPoint = new ElementView(15, 500, 35, image, "");
                 viewPoint.getImageView().setFitHeight(10);
                 viewPoint.getImageView().setFitWidth(10);
                 Connector connector = new Connector();
-                connector.setVertexView(viewPoint);
+                connector.setElementView(viewPoint);
                 graph.addVertex(connector);
-                connector.setID(graph.size());
-                viewPoint.setTextLabel("C (" + graph.size() + ")");
+                connector.setID(graph.vertexSize());
+                viewPoint.setTextLabel("C (" + graph.vertexSize() + ")");
                 anchorPane.getChildren().add(viewPoint.getImageView());
                 anchorPane.getChildren().add(viewPoint.getLabel());
                 viewPoint.getImageView().setId("btnEdit");
@@ -226,8 +251,8 @@ public class MainWindow implements Initializable {
                     @Override
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() == 2) {
-                            editDialog.setValues(graph, connector);
-                            showDialog("Edit");
+                            connectorEditDialog.setValues(graph, connector);
+                            showDialog("Edit", fxmlCnctrEdit);
                             System.out.println(connector.getParameter());
                         }
                     }
@@ -235,25 +260,44 @@ public class MainWindow implements Initializable {
                 System.out.println(connector.getParameter());
                 System.out.println(connector.getID());
                 break;
+            case "btnAddEdge":
+                image = new Image("/elements/dot.png");
+                ElementView viewLine = new ElementView(15, 500, 35, image, "");
+                viewLine.getImageView().setFitHeight(10);
+                viewLine.getImageView().setFitWidth(10);
+                Edge edge = new Edge();
+                edge.setElementView(viewLine);
+                graph.addEdge(edge);
+                edge.setID(graph.edgeSize());
+                viewLine.setTextLabel("L (" + graph.edgeSize() + ")");
+                anchorPane.getChildren().add(viewLine.getImageView());
+                anchorPane.getChildren().add(viewLine.getLabel());
+                viewLine.getImageView().setId("btnEdit");
+                viewLine.getImageView().setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (event.getClickCount() == 2) {
+                            edgeEditDialog.setValues(graph, edge);
+                            showDialog("Edit", fxmlEdgeEdit);
+                        }
+                    }
+                });
+                break;
         }
     }
-    private void showDialog(String title) {
+    private void showDialog(String title, Parent parent) {
         if (editDialogStage == null){
             editDialogStage = new Stage();
             editDialogStage.setTitle(title);
-            editDialogStage.setMinHeight(320);
-            editDialogStage.setMinWidth(300);
             editDialogStage.setResizable(false);
-            editDialogStage.setScene(new Scene(fxmlEdit));
+            editDialogStage.setScene(new Scene(parent));
             editDialogStage.initModality(Modality.WINDOW_MODAL);
             editDialogStage.initOwner(mainStage);
         }
-
         editDialogStage.showAndWait();
     }
 
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
     }
-
 }

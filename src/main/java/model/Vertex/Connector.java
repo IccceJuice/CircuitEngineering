@@ -1,11 +1,12 @@
 package model.Vertex;
 
-import java.util.LinkedList;
+
+import model.Graph.Graph;
 
 public class Connector extends Vertex {
 
-    private Vertex top, bottom;
-    private LinkedList<Vertex> vertexList;
+    private Vertex top = null;
+    private Vertex bottom = null;
     private String name = "Connector";
 
     public void draw() {
@@ -17,4 +18,20 @@ public class Connector extends Vertex {
         return name;
     }
 
+    public void setTop(Graph graph, int numberOfVertex) {
+        top = graph.getVertices().get(numberOfVertex);
+    }
+
+
+    public void setBottom(Graph graph, int numberOfVertex) {
+        bottom = graph.getVertices().get(numberOfVertex);
+    }
+
+    public Vertex getTop() {
+        return top;
+    }
+
+    public Vertex getBottom() {
+        return bottom;
+    }
 }

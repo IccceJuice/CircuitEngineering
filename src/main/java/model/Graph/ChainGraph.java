@@ -1,29 +1,32 @@
 package model.Graph;
 
 
+import model.Edge;
 import model.Vertex.Vertex;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class ChainGraph implements Graph {
 
-    private int size;
-    private ArrayList<Vertex> vertexMap;
+    private int vertexSize;
+    private int edgeSize;
+    private ArrayList<Vertex> vertices;
+    private ArrayList<Edge> edges;
     private boolean batteryIsConnected;
 
 
 
-
     public ChainGraph(){
-        size = 0;
-        vertexMap = null;
+        vertexSize = 0;
+        edgeSize = 0;
+        vertices = null;
+        edges = new ArrayList<Edge>();
     }
 
 //    public boolean isReady(Vertex battery) {
-//        boolean[] visited = new boolean[size];
+//        boolean[] visited = new boolean[vertexSize];
 //        visited = DFS(visited, battery);
-//        for (int i = 0; i < size; ++i){
+//        for (int i = 0; i < vertexSize; ++i){
 //            if (visited[i] != true){
 //                return false;
 //            }
@@ -35,23 +38,23 @@ public class ChainGraph implements Graph {
 //    }
 
 
-    public int size() {
-        return size;
+    public int vertexSize() {
+        return vertexSize;
     }
-
+    public int edgeSize() { return edgeSize; }
 
     public void setBatteryIsConnected(boolean batteryIsConnected) {
         this.batteryIsConnected = batteryIsConnected;
     }
 
     public void turnOn(){
-//        if (isReady(vertexMap.getFirst())){
-//            boolean[] visited = new boolean[size];
-//            DFS(visited, vertexMap.getFirst());
+//        if (isReady(vertices.getFirst())){
+//            boolean[] visited = new boolean[vertexSize];
+//            DFS(visited, vertices.getFirst());
 //        }
     }
 
-    //todo DONT TOUCH
+    //todo DON'T TOUCH
 //    public boolean[] DFS(boolean[] visited, Vertex vertex){
 //        visited[vertex.getID()] = true;
 //        vertex.draw();
@@ -64,15 +67,19 @@ public class ChainGraph implements Graph {
 //    }
 
     public void setGraph(ArrayList<Vertex> vertexList) {
-        this.vertexMap = vertexList;
+        this.vertices = vertexList;
     }
 
     public void addVertex( Vertex vertex) {
-        vertexMap.add(vertex);
-        size++;
+        vertices.add(vertex);
+        vertexSize++;
     }
-
-    public ArrayList<Vertex> getGraph() {
-        return vertexMap;
+    public void addEdge(Edge edge){
+        edges.add(edge);
+        edgeSize++;
+    }
+    public ArrayList<Edge> getEdges() { return edges;}
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
     }
 }
