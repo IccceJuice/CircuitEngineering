@@ -12,6 +12,8 @@ public class ElementView {
     private double labelY = 0;
     private ImageView imageView;
     private Label label;
+    private Rotate rotate;
+
 
     public ElementView(double offsetX, double Y, double offsetY, Image image, String text){
         imageView = new ImageView(image);
@@ -56,5 +58,25 @@ public class ElementView {
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
+    }
+
+    public double getImageX() {
+        return imageX;
+    }
+
+    public double getImageY() {
+        return imageY;
+    }
+
+    public void setRotate(Rotate rotate) {
+        this.rotate = rotate;
+    }
+
+    public Rotate getRotate() {
+        return rotate;
+    }
+
+    public enum Rotate{
+        horizontal, vertical
     }
 }

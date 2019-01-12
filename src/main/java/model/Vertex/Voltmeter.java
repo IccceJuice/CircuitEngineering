@@ -20,6 +20,17 @@ public class Voltmeter extends Vertex {
     public void draw() {
         System.out.println(name);
     }
+
+    @Override
+    public Vertex getTop() {
+        return null;
+    }
+
+    @Override
+    public Vertex getBottom() {
+        return null;
+    }
+
     public boolean isConnected(){
         return isConnected;
     }

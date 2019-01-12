@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindow">
@@ -89,11 +90,13 @@
                         <ImageView fx:id="imgBattery" fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddConnector" layoutX="127.0" layoutY="322.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddEdge" layoutX="81.0" layoutY="426.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0" />
+                  <Button fx:id="btnAddConnector" layoutX="123.0" layoutY="322.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgConnector" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
+                  <Line endX="18.0" endY="-15.0" layoutX="111.0" layoutY="456.0" startX="-15.0" startY="15.0" strokeWidth="2.0" />
                </children>
         </AnchorPane>
             <AnchorPane fx:id="anchorPane" prefHeight="551.0" prefWidth="378.0">

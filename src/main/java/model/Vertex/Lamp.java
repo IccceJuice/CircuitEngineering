@@ -14,6 +14,16 @@ public class Lamp extends Vertex {
     }
 
     @Override
+    public Vertex getTop() {
+        return null;
+    }
+
+    @Override
+    public Vertex getBottom() {
+        return null;
+    }
+
+    @Override
     public String getName() {
         return name;
     }

@@ -107,4 +107,8 @@ public abstract class Vertex {
     public void setElementView(ElementView elementView) {
         this.elementView = elementView;
     }
+
+    public abstract Vertex getTop();
+
+    public abstract Vertex getBottom();
 }

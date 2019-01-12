@@ -1,7 +1,6 @@
 package model;
 
 import controller.ElementView;
-import model.Graph.Graph;
 import model.Vertex.Vertex;
 
 public class Edge {
@@ -29,9 +28,6 @@ public class Edge {
 
     public Vertex getTo() {
         return to;
-    }
-    public void setFromID(Graph graph, int ID){
-        from = graph.getVertices().get(ID);
     }
 
     public void setElementView(ElementView elementView) {

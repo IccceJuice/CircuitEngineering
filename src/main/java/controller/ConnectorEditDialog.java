@@ -13,11 +13,11 @@ import model.Vertex.Vertex;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ConnectorEditDialog implements Initializable {
+public class ConnectorEditDialog extends EditDialog implements Initializable {
 
 
 
-    private Connector connector;
+    private Vertex connector;
     private ResourceBundle resourceBundle;
     private Graph graph;
 
@@ -54,20 +54,20 @@ public class ConnectorEditDialog implements Initializable {
         closeAction(actionEvent);
     }
 
-    public void setValues(Graph graph, Connector connector) {
+    public void setValues(Graph graph, Vertex vertex) {
         this.graph = graph;
-        this.connector = connector;
-        if (connector.getPrev() != null) {
-            txtLeft.setText(String.valueOf(connector.getPrev().getID()));
+        this.connector = vertex;
+        if (vertex.getPrev() != null) {
+            txtLeft.setText(String.valueOf(vertex.getPrev().getID()));
         }
-        if (connector.getNext() != null) {
-            txtRight.setText(String.valueOf(connector.getNext().getID()));
+        if (vertex.getNext() != null) {
+            txtRight.setText(String.valueOf(vertex.getNext().getID()));
         }
-        if (connector.getTop() != null) {
-            txtTop.setText(String.valueOf(connector.getTop().getID()));
+        if (vertex.getTop() != null) {
+            txtTop.setText(String.valueOf(vertex.getTop().getID()));
         }
-        if (connector.getBottom() != null) {
-            txtBottom.setText(String.valueOf(connector.getBottom().getID()));
+        if (vertex.getBottom() != null) {
+            txtBottom.setText(String.valueOf(vertex.getBottom().getID()));
         }
     }
 
