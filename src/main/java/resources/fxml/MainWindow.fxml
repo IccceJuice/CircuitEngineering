@@ -101,7 +101,7 @@
         </AnchorPane>
             <AnchorPane fx:id="anchorPane" prefHeight="551.0" prefWidth="378.0">
                <children>
-                  <Button layoutX="309.0" layoutY="21.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="309.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnOn" text="Button" />
                </children></AnchorPane>
       </items>
     </SplitPane>

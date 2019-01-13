@@ -137,55 +137,73 @@ public class MainWindow implements Initializable {
             case "btnAddBattery":
                 image = new Image("/elements/Battery.png");
                 ElementView viewBattery = new ElementView(47, 50, 20, image, "");
+                viewBattery.setRotate(ElementView.Rotate.vertical);
                 Battery battery = new Battery();
                 createElement( battery, viewBattery, vertexEditDialog, fxmlEdit, vertexEdit);
                 break;
             case "btnAddResistor":
                 image = new Image("/elements/Res.png");
                 ElementView viewResistor = new ElementView(15, 140, 35, image, "");
+                viewResistor.setRotate(ElementView.Rotate.horizontal);
                 Resistor resistor = new Resistor();
-
                 createElement(resistor, viewResistor, vertexEditDialog, fxmlEdit, vertexEdit);
                 break;
             case "btnAddLamp":
                 image = new Image("/elements/lampOff.png");
                 ElementView viewLamp = new ElementView(16, 230, 42, image, "");
+                viewLamp.setRotate(ElementView.Rotate.horizontal);
                 Lamp lamp = new Lamp();
                 createElement(lamp, viewLamp, vertexEditDialog, fxmlEdit, vertexEdit);
                 break;
             case "btnAddAmmeter":
                 image = new Image("/elements/Ammeter.png");
                 ElementView viewAmmeter = new ElementView(15, 320, 35, image, "");
+                viewAmmeter.setRotate(ElementView.Rotate.horizontal);
                 Ammeter ammeter = new Ammeter();
                 createElement(ammeter, viewAmmeter, vertexEditDialog, fxmlEdit, vertexEdit);
                 break;
             case "btnAddVoltmeter":
                 image = new Image("/elements/Voltmeter.png");
                 ElementView viewVoltmeter = new ElementView(15, 410, 35, image, "");
+                viewVoltmeter.setRotate(ElementView.Rotate.horizontal);
                 Voltmeter voltmeter = new Voltmeter();
                 createElement(voltmeter, viewVoltmeter, vertexEditDialog, fxmlEdit, vertexEdit);
                 break;
             case "btnAddConnector":
                 image = new Image("/elements/dot.png");
                 ElementView viewPoint = new ElementView(15, 500, 35, image, "");
+                viewPoint.setRotate(ElementView.Rotate.horizontal);
                 viewPoint.getImageView().setFitHeight(10);
                 viewPoint.getImageView().setFitWidth(10);
                 Connector connector = new Connector();
                 createElement(connector, viewPoint, connectorEditDialog, fxmlCnctrEdit, cnctrEdit);
                 break;
             case "btnAddEdge":
+                Edge edge = new Edge();
+                edgeEditDialog.setValues(graph, edge);
                 showDialog(edgeEdit,"Connect", fxmlEdgeEdit);
-                Edge edge = edgeEditDialog.getEdge();
                 if (edge.getFrom() == null || edge.getTo() == null) {
-                    //stage.setScene(null);
                     break;
                 }
-                //edgeEditDialog.setValues(graph, edge);
+                edge.getFrom().draw();
+                edge.getTo().draw();
+                double startX = 0;
+                double startY = 0;
+                double endX = 0;
+                double endY = 0;
+                if (edge.getFrom().getElementView().getRotate() == ElementView.Rotate.vertical){
+                    startX = edge.getFrom().getElementView().getImageView().getTranslateX() + 28;
+                    startY = edge.getFrom().getElementView().getImageView().getTranslateY();
+                }
+                endX = edge.getTo().getElementView().getImageView().getTranslateX();
+                endY = edge.getTo().getElementView().getImageView().getTranslateY() + 28;
+//                .setOnMousePressed(e -> {
+//                    imageX = imageView.getTranslateX() - e.getSceneX();
+//                    imageY = imageView.getTranslateY() - e.getSceneY();
+//                    labelX = label.getTranslateX() - e.getSceneX();
+//                    labelY = label.getTranslateY() - e.getSceneY();
+//                });
 
-                double startX = edge.getFrom().getElementView().getImageView().getTranslateX() + 28;
-                double startY = edge.getFrom().getElementView().getImageView().getTranslateY();
-                double endX = edge.getTo().getElementView().getImageView().getTranslateX();
-                double endY = edge.getTo().getElementView().getImageView().getTranslateY() + 28;
                 Line line = new Line(startX, startY, endX, endY);
                 line.setStrokeWidth(2);
                 line.setStroke(Color.BLACK);
@@ -193,6 +211,14 @@ public class MainWindow implements Initializable {
                 anchorPane.getChildren().add(line);
                 graph.addEdge(edge);
                 edge.setID(graph.edgeSize());
+//                edge.getFrom().getElementView().getImageView().setOnMouseDragged(e -> {
+//                    line.setStartX(line.getStartY() + e.getSceneX());
+//                    line.setStartY(line.getStartY() + e.getSceneY());
+////                    imageView.setTranslateX(imageX + e.getSceneX());
+////                    imageView.setTranslateY(imageY + e.getSceneY());
+////                    label.setTranslateX(labelX + e.getSceneX());
+////                    label.setTranslateY(labelY + e.getSceneY());
+//                });
                 break;
         }
     }
@@ -233,10 +259,10 @@ public class MainWindow implements Initializable {
         elementView.getImageView().setId("btnEdit");
         elementView.getImageView().setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-                if (stage == null) {
-                    System.out.println("Stage == null");
-
-                }
+//                if (stage == null) {
+//                    System.out.println("Stage == null");
+//
+//                }
                 editDialog.setValues(graph, vertex);
                 stage.showAndWait();
                 //showDialog(stage,"Edit", parent);
@@ -246,5 +272,9 @@ public class MainWindow implements Initializable {
         });
         System.out.println(vertex.getParameter());
         System.out.println(vertex.getID());
+    }
+
+    public void btnOn(ActionEvent actionEvent) {
+        graph.printCycles();
     }
 }

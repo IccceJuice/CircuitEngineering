@@ -6,7 +6,6 @@ import model.Vertex.Vertex;
 import java.util.*;
 
 public interface Graph {
-
     void setGraph(ArrayList<Vertex> vertexMap);
     void addVertex( Vertex vertex);
     void addEdge(Edge edge);
@@ -14,4 +13,5 @@ public interface Graph {
     void turnOn();
     ArrayList<Vertex> getVertices();
     int vertexSize();
+    void printCycles();
 }

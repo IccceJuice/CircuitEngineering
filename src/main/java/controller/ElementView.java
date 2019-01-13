@@ -3,6 +3,7 @@ package controller;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
 
 
 public class ElementView {
@@ -13,6 +14,8 @@ public class ElementView {
     private ImageView imageView;
     private Label label;
     private Rotate rotate;
+    private Line adjacentLine;
+
 
 
     public ElementView(double offsetX, double Y, double offsetY, Image image, String text){
