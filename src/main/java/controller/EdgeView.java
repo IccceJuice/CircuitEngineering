@@ -13,12 +13,15 @@ public class EdgeView {
     private ElementView endEl;
     private boolean height;
     private boolean width;
-    EdgeView() {
+    EdgeView(ElementView startEl, ElementView endEl) {
+        this.startEl = startEl;
+        this.endEl = endEl;
+        calculateView();
+        calculatePos();
         line = new Line(startX, startY, endX, endY);
         line.setStrokeWidth(2);
         line.setVisible(true);
         line.setStroke(Color.BLACK);
-
     }
 
     public void setStartEl(ElementView startEl) {
@@ -46,15 +49,39 @@ public class EdgeView {
             height = false;
         }
     }
-    
+
     public void calculatePos(){
-        if (startEl.getRotate() == ElementView.Rotate.vertical){
+        if (startEl.getRotate() == ElementView.Rotate.vertical && height){
             startX = startEl.getImageView().getTranslateX() + 28;
             startY = startEl.getImageView().getTranslateY();
         }
-        else {
+        if (startEl.getRotate() == ElementView.Rotate.vertical && !height){
+            startX = startEl.getImageView().getTranslateX() + 28;
+            startY = startEl.getImageView().getTranslateY() + 56;
+        }
+        if (startEl.getRotate() == ElementView.Rotate.horizontal && width){
+            startX = startEl.getImageView().getTranslateX() + 56;
+            startY = startEl.getImageView().getTranslateY() + 28;
+        }
+        if (startEl.getRotate() == ElementView.Rotate.horizontal && !width){
             startX = startEl.getImageView().getTranslateX();
-            startY = startEl.getImageView().getTranslateY();
+            startY = startEl.getImageView().getTranslateY() + 28;
+        }
+        if (endEl.getRotate() == ElementView.Rotate.vertical && height){
+            endX = endEl.getImageView().getTranslateX() + 28;
+            endY = endEl.getImageView().getTranslateY() + 56;
+        }
+        if (endEl.getRotate() == ElementView.Rotate.vertical && !height){
+            endX = endEl.getImageView().getTranslateX() + 28;
+            endY = endEl.getImageView().getTranslateY();
+        }
+        if (endEl.getRotate() == ElementView.Rotate.horizontal && width){
+            endX = endEl.getImageView().getTranslateX();
+            endY = endEl.getImageView().getTranslateY() + 28;
+        }
+        if (endEl.getRotate() == ElementView.Rotate.horizontal && !width){
+            endX = endEl.getImageView().getTranslateX() + 56;
+            endY = endEl.getImageView().getTranslateY() + 28;
         }
     }
 }

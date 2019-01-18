@@ -187,32 +187,10 @@ public class MainWindow implements Initializable {
                     break;
                 }
                 //todo Отрисовка линий
-                double startX = 0;
-                double startY = 0;
-                double endX = 0;
-                double endY = 0;
-
-
-                endX = edge.getTo().getElementView().getImageView().getTranslateX();
-                endY = edge.getTo().getElementView().getImageView().getTranslateY() + 28;
-//                .setOnMousePressed(e -> {
-//                    imageX = imageView.getTranslateX() - e.getSceneX();
-//                    imageY = imageView.getTranslateY() - e.getSceneY();
-//                    labelX = label.getTranslateX() - e.getSceneX();
-//                    labelY = label.getTranslateY() - e.getSceneY();
-//                });
-
+                edge.setEdgeView(new EdgeView(edge.getFrom().getElementView(), edge.getTo().getElementView()));
                 anchorPane.getChildren().add(edge.getEdgeView().getLine());
                 graph.addEdge(edge);
                 edge.setID(graph.edgeSize());
-//                edge.getFrom().getElementView().getImageView().setOnMouseDragged(e -> {
-//                    line.setStartX(line.getStartY() + e.getSceneX());
-//                    line.setStartY(line.getStartY() + e.getSceneY());
-////                    imageView.setTranslateX(imageX + e.getSceneX());
-////                    imageView.setTranslateY(imageY + e.getSceneY());
-////                    label.setTranslateX(labelX + e.getSceneX());
-////                    label.setTranslateY(labelY + e.getSceneY());
-//                });
                 break;
         }
     }

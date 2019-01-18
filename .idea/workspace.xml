@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce95d203-9e81-4a42-b33e-d9a01f4cd5a0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controller/EdgeView.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EdgeEditDialog.java" afterPath="$PROJECT_DIR$/src/main/java/controller/EdgeEditDialog.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EdgeView.java" afterPath="$PROJECT_DIR$/src/main/java/controller/EdgeView.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainWindow.java" afterPath="$PROJECT_DIR$/src/main/java/controller/MainWindow.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Edge.java" afterPath="$PROJECT_DIR$/src/main/java/model/Edge.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Graph/ChainGraph.java" afterPath="$PROJECT_DIR$/src/main/java/model/Graph/ChainGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Graph/Graph.java" afterPath="$PROJECT_DIR$/src/main/java/model/Graph/Graph.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,35 +16,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+              <caret line="187" column="17" lean-forward="true" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9451#9452#0" expanded="true" />
-                <element signature="e#9493#9494#0" expanded="true" />
-                <element signature="e#10624#10625#0" expanded="true" />
-                <element signature="e#10659#10660#0" expanded="true" />
+                <element signature="e#8355#8356#0" expanded="true" />
+                <element signature="e#8397#8398#0" expanded="true" />
+                <element signature="e#9528#9529#0" expanded="true" />
+                <element signature="e#9563#9564#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EdgeView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EdgeView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/EdgeView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+            <state relative-caret-position="224">
+              <caret line="59" column="64" lean-forward="false" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#637#638#0" expanded="true" />
-                <element signature="e#684#685#0" expanded="true" />
-                <element signature="e#718#719#0" expanded="true" />
-                <element signature="e#747#748#0" expanded="true" />
-                <element signature="e#774#775#0" expanded="true" />
+                <element signature="e#745#746#0" expanded="true" />
+                <element signature="e#783#784#0" expanded="true" />
+                <element signature="e#830#831#0" expanded="true" />
+                <element signature="e#864#865#0" expanded="true" />
+                <element signature="e#893#894#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -498,7 +494,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39493293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39493293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17203514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -571,10 +567,10 @@
           <caret line="140" column="47" lean-forward="false" selection-start-line="140" selection-start-column="47" selection-end-line="140" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9451#9452#0" expanded="true" />
-            <element signature="e#9493#9494#0" expanded="true" />
-            <element signature="e#10624#10625#0" expanded="true" />
-            <element signature="e#10659#10660#0" expanded="true" />
+            <element signature="e#8355#8356#0" expanded="true" />
+            <element signature="e#8397#8398#0" expanded="true" />
+            <element signature="e#9528#9529#0" expanded="true" />
+            <element signature="e#9563#9564#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -947,32 +943,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MainWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EdgeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+        <state relative-caret-position="224">
+          <caret line="59" column="64" lean-forward="false" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9451#9452#0" expanded="true" />
-            <element signature="e#9493#9494#0" expanded="true" />
-            <element signature="e#10624#10625#0" expanded="true" />
-            <element signature="e#10659#10660#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EdgeView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+        <state relative-caret-position="204">
+          <caret line="187" column="17" lean-forward="true" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#637#638#0" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
+            <element signature="e#8355#8356#0" expanded="true" />
+            <element signature="e#8397#8398#0" expanded="true" />
+            <element signature="e#9528#9529#0" expanded="true" />
+            <element signature="e#9563#9564#0" expanded="true" />
           </folding>
         </state>
       </provider>
