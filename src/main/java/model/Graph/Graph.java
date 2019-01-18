@@ -14,4 +14,5 @@ public interface Graph {
     ArrayList<Vertex> getVertices();
     int vertexSize();
     void printCycles();
+    void setBatteryID(int batteryID);
 }

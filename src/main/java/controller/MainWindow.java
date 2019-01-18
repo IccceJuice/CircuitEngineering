@@ -140,6 +140,7 @@ public class MainWindow implements Initializable {
                 viewBattery.setRotate(ElementView.Rotate.vertical);
                 Battery battery = new Battery();
                 createElement( battery, viewBattery, vertexEditDialog, fxmlEdit, vertexEdit);
+                graph.setBatteryID(battery.getID() - 1);
                 break;
             case "btnAddResistor":
                 image = new Image("/elements/Res.png");
@@ -185,16 +186,13 @@ public class MainWindow implements Initializable {
                 if (edge.getFrom() == null || edge.getTo() == null) {
                     break;
                 }
-                edge.getFrom().draw();
-                edge.getTo().draw();
+                //todo Отрисовка линий
                 double startX = 0;
                 double startY = 0;
                 double endX = 0;
                 double endY = 0;
-                if (edge.getFrom().getElementView().getRotate() == ElementView.Rotate.vertical){
-                    startX = edge.getFrom().getElementView().getImageView().getTranslateX() + 28;
-                    startY = edge.getFrom().getElementView().getImageView().getTranslateY();
-                }
+
+
                 endX = edge.getTo().getElementView().getImageView().getTranslateX();
                 endY = edge.getTo().getElementView().getImageView().getTranslateY() + 28;
 //                .setOnMousePressed(e -> {
@@ -204,11 +202,7 @@ public class MainWindow implements Initializable {
 //                    labelY = label.getTranslateY() - e.getSceneY();
 //                });
 
-                Line line = new Line(startX, startY, endX, endY);
-                line.setStrokeWidth(2);
-                line.setStroke(Color.BLACK);
-                line.setVisible(true);
-                anchorPane.getChildren().add(line);
+                anchorPane.getChildren().add(edge.getEdgeView().getLine());
                 graph.addEdge(edge);
                 edge.setID(graph.edgeSize());
 //                edge.getFrom().getElementView().getImageView().setOnMouseDragged(e -> {

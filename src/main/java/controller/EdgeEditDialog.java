@@ -53,12 +53,6 @@ public class EdgeEditDialog extends EditDialog implements Initializable{
     public void setValues(Graph graph, Edge edge) {
         this.graph = graph;
         this.edge = edge;
-        if (edge.getFrom() != null) {
-            txtFrom.setText(String.valueOf(edge.getFrom().getID()));
-        }
-        if (edge.getTo() != null) {
-            txtTo.setText(String.valueOf(edge.getTo().getID()));
-        }
     }
 
     public Edge getEdge() {
