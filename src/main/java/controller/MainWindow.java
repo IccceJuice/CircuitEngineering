@@ -48,10 +48,15 @@ public class MainWindow implements Initializable {
     private FXMLLoader fxmlLoader = new FXMLLoader();
     private FXMLLoader fxmlLoaderCnctr = new FXMLLoader();
     private FXMLLoader fxmlLoaderEdge = new FXMLLoader();
+    private FXMLLoader fxmlLoaderDeleteEdge = new FXMLLoader();
 
     private Parent fxmlEdit;
     private VertexEditDialog vertexEditDialog;
     private Stage vertexEdit;
+
+    private Parent fxmlDeleteEdge;
+    private EdgeEditDialog deleteEdgeDialog;
+    private Stage deleteEdge;
 
     private Parent fxmlCnctrEdit;
     private ConnectorEditDialog connectorEditDialog;
@@ -69,6 +74,14 @@ public class MainWindow implements Initializable {
         imgAmmeter.setImage(new Image("/elements/Ammeter.png"));
         imgVoltmeter.setImage(new Image("/elements/Voltmeter.png"));
         imgConnector.setImage(new Image("/elements/dot.png"));
+
+        fxmlLoaderDeleteEdge.setLocation(getClass().getResource("/fxml/DeleteEdge.fxml"));
+        try {
+            fxmlDeleteEdge = fxmlLoaderDeleteEdge.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        deleteEdgeDialog = fxmlLoaderDeleteEdge.getController();
 
         fxmlLoader.setLocation(getClass().getResource("/fxml/EditDialog.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
@@ -100,19 +113,20 @@ public class MainWindow implements Initializable {
         vertexEdit = initStage(vertexEdit, fxmlEdit);
         cnctrEdit = initStage(cnctrEdit, fxmlCnctrEdit);
         edgeEdit = initStage(edgeEdit, fxmlEdgeEdit);
+        deleteEdge = initStage(deleteEdge, fxmlDeleteEdge);
     }
 
-    private void initEditDialog( Parent parent){
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/fxml/EditDialog.fxml"));
-        fxmlLoader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
-        parent = null;
-        try {
-            parent = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void initEditDialog( Parent parent){
+//        FXMLLoader fxmlLoader = new FXMLLoader();
+//        fxmlLoader.setLocation(getClass().getResource("/fxml/EditDialog.fxml"));
+//        fxmlLoader.setResources(ResourceBundle.getBundle("bundles.Locale", new Locale("en")));
+//        parent = null;
+//        try {
+//            parent = fxmlLoader.load();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void setGraph(Graph graphInit) {
         graph = graphInit;
@@ -139,7 +153,7 @@ public class MainWindow implements Initializable {
                 ElementView viewBattery = new ElementView(47, 50, 20, image, "");
                 viewBattery.setRotate(ElementView.Rotate.vertical);
                 Battery battery = new Battery();
-                createElement( battery, viewBattery, vertexEditDialog, fxmlEdit, vertexEdit);
+                createElement( battery, viewBattery, vertexEditDialog, vertexEdit);
                 graph.setBatteryID(battery.getID() - 1);
                 break;
             case "btnAddResistor":
@@ -147,28 +161,28 @@ public class MainWindow implements Initializable {
                 ElementView viewResistor = new ElementView(15, 140, 35, image, "");
                 viewResistor.setRotate(ElementView.Rotate.horizontal);
                 Resistor resistor = new Resistor();
-                createElement(resistor, viewResistor, vertexEditDialog, fxmlEdit, vertexEdit);
+                createElement(resistor, viewResistor, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddLamp":
                 image = new Image("/elements/lampOff.png");
                 ElementView viewLamp = new ElementView(16, 230, 42, image, "");
                 viewLamp.setRotate(ElementView.Rotate.horizontal);
                 Lamp lamp = new Lamp();
-                createElement(lamp, viewLamp, vertexEditDialog, fxmlEdit, vertexEdit);
+                createElement(lamp, viewLamp, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddAmmeter":
                 image = new Image("/elements/Ammeter.png");
                 ElementView viewAmmeter = new ElementView(15, 320, 35, image, "");
                 viewAmmeter.setRotate(ElementView.Rotate.horizontal);
                 Ammeter ammeter = new Ammeter();
-                createElement(ammeter, viewAmmeter, vertexEditDialog, fxmlEdit, vertexEdit);
+                createElement(ammeter, viewAmmeter, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddVoltmeter":
                 image = new Image("/elements/Voltmeter.png");
                 ElementView viewVoltmeter = new ElementView(15, 410, 35, image, "");
                 viewVoltmeter.setRotate(ElementView.Rotate.horizontal);
                 Voltmeter voltmeter = new Voltmeter();
-                createElement(voltmeter, viewVoltmeter, vertexEditDialog, fxmlEdit, vertexEdit);
+                createElement(voltmeter, viewVoltmeter, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddConnector":
                 image = new Image("/elements/dot.png");
@@ -177,20 +191,30 @@ public class MainWindow implements Initializable {
                 viewPoint.getImageView().setFitHeight(10);
                 viewPoint.getImageView().setFitWidth(10);
                 Connector connector = new Connector();
-                createElement(connector, viewPoint, connectorEditDialog, fxmlCnctrEdit, cnctrEdit);
+                createElement(connector, viewPoint, connectorEditDialog, cnctrEdit);
                 break;
             case "btnAddEdge":
                 Edge edge = new Edge();
-                edgeEditDialog.setValues(graph, edge);
+                edgeEditDialog.setValues(graph, edge, anchorPane);
                 showDialog(edgeEdit,"Connect", fxmlEdgeEdit);
                 if (edge.getFrom() == null || edge.getTo() == null) {
                     break;
                 }
+                edge.getFrom().addAdjacentEdge(edge);
+                edge.getTo().addAdjacentEdge(edge);
+
                 //todo Отрисовка линий
                 edge.setEdgeView(new EdgeView(edge.getFrom().getElementView(), edge.getTo().getElementView()));
                 anchorPane.getChildren().add(edge.getEdgeView().getLine());
                 graph.addEdge(edge);
                 edge.setID(graph.edgeSize());
+                edge.getEdgeView().getLine().setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2) {
+                        deleteEdgeDialog.setValues(graph, edge, anchorPane);
+                        deleteEdge.showAndWait();
+//                        System.out.println(vertex.getParameter());
+                    }
+                });
                 break;
         }
     }
@@ -220,8 +244,7 @@ public class MainWindow implements Initializable {
         this.mainStage = mainStage;
     }
 
-    private void createElement(Vertex vertex, ElementView elementView, EditDialog editDialog,
-                               Parent parent, Stage stage){
+    private void createElement(Vertex vertex, ElementView elementView, EditDialog editDialog, Stage stage){
         vertex.setElementView(elementView);
         graph.addVertex(vertex);
         vertex.setID(graph.vertexSize());
@@ -231,14 +254,8 @@ public class MainWindow implements Initializable {
         elementView.getImageView().setId("btnEdit");
         elementView.getImageView().setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-//                if (stage == null) {
-//                    System.out.println("Stage == null");
-//
-//                }
-                editDialog.setValues(graph, vertex);
+                editDialog.setValues(graph, vertex, anchorPane, vertex.getElementView().getLabel() );
                 stage.showAndWait();
-                //showDialog(stage,"Edit", parent);
-
                 System.out.println(vertex.getParameter());
             }
         });
@@ -249,4 +266,15 @@ public class MainWindow implements Initializable {
     public void btnOn(ActionEvent actionEvent) {
         graph.printCycles();
     }
+
+    public void clearAll(ActionEvent actionEvent) {
+        graph.getVertices().clear();
+        graph.getEdges().clear();
+        anchorPane.getChildren().clear();
+    }
+
+//    protected static void deleteVertex(Vertex vertex){
+//        anchorPane
+//        graph.getVertices().remove(vertex.getID() - 1);
+//    }
 }

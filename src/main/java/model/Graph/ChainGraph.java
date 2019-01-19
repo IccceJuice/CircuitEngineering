@@ -43,7 +43,7 @@ public class ChainGraph implements Graph {
 
 
     public int vertexSize() {
-        return vertexSize;
+        return vertices.size();
     }
     public int edgeSize() { return edgeSize; }
 
@@ -151,4 +151,5 @@ public class ChainGraph implements Graph {
     public void setBatteryID(int batteryID) {
         this.batteryID = batteryID;
     }
+
 }

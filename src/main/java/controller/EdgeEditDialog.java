@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Edge;
 import model.Graph.Graph;
@@ -18,6 +20,7 @@ public class EdgeEditDialog extends EditDialog implements Initializable{
     private Edge edge;
     private Graph graph;
     private ResourceBundle resourceBundle;
+    private AnchorPane anchorPane;
 
     @FXML
     private TextField txtFrom;
@@ -50,9 +53,12 @@ public class EdgeEditDialog extends EditDialog implements Initializable{
         closeAction(actionEvent);
     }
 
-    public void setValues(Graph graph, Edge edge) {
+    public void setValues(Graph graph, Edge edge, AnchorPane anchorPane) {
+        this.anchorPane = anchorPane;
         this.graph = graph;
         this.edge = edge;
+        txtFrom.setText(null);
+        txtTo.setText(null);
     }
 
     public Edge getEdge() {
@@ -71,7 +77,15 @@ public class EdgeEditDialog extends EditDialog implements Initializable{
     }
 
     @Override
-    public void setValues(Graph graph, Vertex vertex) {
+    public void setValues(Graph graph, Vertex vertex, AnchorPane anchorPane, Label label) {
 
+    }
+
+    public void deleteEdge(ActionEvent actionEvent) {
+        anchorPane.getChildren().remove(edge.getEdgeView().getLine());
+        edge.getFrom().getAdjacentEdges().remove(edge);
+        edge.getTo().getAdjacentEdges().remove(edge);
+        graph.getEdges().remove(edge);
+        closeAction(actionEvent);
     }
 }

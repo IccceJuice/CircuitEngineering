@@ -1,10 +1,14 @@
 package model.Vertex;
 
 import controller.ElementView;
+import model.Edge;
 import model.Graph.Graph;
+
+import java.util.ArrayList;
 
 public abstract class Vertex {
 
+    private ArrayList<Edge> adjacentEdges = new ArrayList<Edge>();
     private double parameter;
     private boolean isIncluded = false;
     private double resistance = 1;
@@ -111,4 +115,12 @@ public abstract class Vertex {
     public abstract Vertex getTop();
 
     public abstract Vertex getBottom();
+
+    public void addAdjacentEdge(Edge edge){
+        adjacentEdges.add(edge);
+    }
+
+    public ArrayList<Edge> getAdjacentEdges() {
+        return adjacentEdges;
+    }
 }

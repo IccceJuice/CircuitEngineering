@@ -4,8 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Edge;
 import model.Graph.Graph;
 import model.Vertex.Connector;
 import model.Vertex.Vertex;
@@ -84,5 +87,10 @@ public class ConnectorEditDialog extends EditDialog implements Initializable {
 //            return false;
 //        }
         return true;
+    }
+
+    @Override
+    public void setValues(Graph graph, Vertex vertex, AnchorPane anchorPane, Label label) {
+
     }
 }

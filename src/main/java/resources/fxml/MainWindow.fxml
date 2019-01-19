@@ -64,45 +64,45 @@
         <AnchorPane maxWidth="222.0" minWidth="204.0" prefHeight="551.0" prefWidth="233.0">
                <children>
 
-                  <Separator layoutX="218.0" orientation="VERTICAL" prefHeight="551.0" prefWidth="19.0" />
-                  <Button fx:id="btnAddVoltmeter" layoutX="38.0" layoutY="322.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Separator layoutX="218.0" orientation="VERTICAL" prefHeight="551.0" prefWidth="9.0" />
+                  <Button fx:id="btnAddVoltmeter" layoutX="39.0" layoutY="303.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgVoltmeter" fitHeight="56.0" fitWidth="56.0" onMouseDragEntered="#addBattery" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddAmmeter" layoutX="123.0" layoutY="214.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddAmmeter" layoutX="124.0" layoutY="195.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgAmmeter" fitHeight="56.0" fitWidth="56.0" onMouseDragEntered="#addBattery" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddLamp" layoutX="38.0" layoutY="214.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddLamp" layoutX="39.0" layoutY="195.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgLamp" fitHeight="56.0" fitWidth="56.0" onMouseDragEntered="#addBattery" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddResistor" layoutX="123.0" layoutY="104.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddResistor" layoutX="124.0" layoutY="85.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgResistor" fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddBattery" layoutX="38.0" layoutY="104.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddBattery" layoutX="39.0" layoutY="85.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgBattery" fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAddEdge" layoutX="81.0" layoutY="426.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0" />
-                  <Button fx:id="btnAddConnector" layoutX="123.0" layoutY="322.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="btnAddEdge" layoutX="82.0" layoutY="407.0" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0" />
+                  <Button fx:id="btnAddConnector" layoutX="124.0" layoutY="303.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionButtonPressed" prefHeight="60.0" prefWidth="60.0">
                      <graphic>
                         <ImageView fx:id="imgConnector" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Line endX="18.0" endY="-15.0" layoutX="111.0" layoutY="456.0" startX="-15.0" startY="15.0" strokeWidth="2.0" />
+                  <Line endX="18.0" endY="-15.0" layoutX="112.0" layoutY="437.0" startX="-15.0" startY="15.0" strokeWidth="2.0" />
+                  <Button fx:id="btnClearAll" layoutX="40.0" layoutY="18.0" mnemonicParsing="false" onAction="#clearAll" text="Clear all" />
+                  <Button layoutX="139.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnOn" text="On" />
+                  <Separator layoutY="56.0" prefHeight="9.0" prefWidth="233.0" />
                </children>
         </AnchorPane>
-            <AnchorPane fx:id="anchorPane" prefHeight="551.0" prefWidth="378.0">
-               <children>
-                  <Button layoutX="309.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnOn" text="Button" />
-               </children></AnchorPane>
+            <AnchorPane fx:id="anchorPane" prefHeight="551.0" prefWidth="378.0" />
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

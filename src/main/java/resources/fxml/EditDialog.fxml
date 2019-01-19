@@ -6,24 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VertexEditDialog">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VertexEditDialog">
    <children>
-      <Label fx:id="parameter" layoutX="23.0" layoutY="29.0" text="Parameter">
+      <Label fx:id="parameter" layoutX="41.0" layoutY="29.0" text="Parameter">
          <opaqueInsets>
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
       </Label>
       <Label fx:id="resistance" layoutX="40.0" layoutY="79.0" text="Resistance">
-         <opaqueInsets>
-            <Insets bottom="10.0" top="25.0" />
-         </opaqueInsets>
-      </Label>
-      <Label fx:id="from" layoutX="53.0" layoutY="134.0" text="From">
-         <opaqueInsets>
-            <Insets bottom="10.0" top="25.0" />
-         </opaqueInsets>
-      </Label>
-      <Label fx:id="to" layoutX="60.0" layoutY="179.0" text="To">
          <opaqueInsets>
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
@@ -38,17 +28,8 @@
             <Insets bottom="10.0" top="25.0" />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="fromTF" layoutX="120.0" layoutY="125.0">
-         <opaqueInsets>
-            <Insets bottom="10.0" top="10.0" />
-         </opaqueInsets>
-      </TextField>
-      <TextField fx:id="toTF" layoutX="120.0" layoutY="175.0">
-         <opaqueInsets>
-            <Insets bottom="10.0" top="25.0" />
-         </opaqueInsets>
-      </TextField>
-      <Button fx:id="btnCancel" cancelButton="true" layoutX="183.0" layoutY="237.0" mnemonicParsing="false" onAction="#closeAction" text="Cancel" />
-      <Button fx:id="btnOk" defaultButton="true" layoutX="128.0" layoutY="237.0" mnemonicParsing="false" onAction="#actionSave" text="Ok" />
+      <Button fx:id="btnCancel" cancelButton="true" layoutX="217.0" layoutY="126.0" mnemonicParsing="false" onAction="#closeAction" text="Cancel" />
+      <Button fx:id="btnOk" defaultButton="true" layoutX="163.0" layoutY="126.0" mnemonicParsing="false" onAction="#actionSave" text="Ok" />
+      <Button layoutX="43.0" layoutY="126.0" mnemonicParsing="false" onAction="#deleteElement" text="Delete" />
    </children>
 </AnchorPane>

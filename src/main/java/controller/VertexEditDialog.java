@@ -2,6 +2,8 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
@@ -11,6 +13,7 @@ import model.Graph.Graph;
 import model.Vertex.Vertex;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class VertexEditDialog extends EditDialog implements Initializable{
@@ -19,16 +22,14 @@ public class VertexEditDialog extends EditDialog implements Initializable{
     private Vertex vertex;
     private ResourceBundle resourceBundle;
     private Graph graph;
-
+    private AnchorPane anchorPane;
+    private Label label;
 
     @FXML
     private TextField parameterTF;
     @FXML
     private TextField resistanceTF;
-    @FXML
-    private TextField fromTF;
-    @FXML
-    private TextField toTF;
+
 
 
     @Override
@@ -46,23 +47,26 @@ public class VertexEditDialog extends EditDialog implements Initializable{
         vertex.setParameter(Double.parseDouble(parameterTF.getText()));
         vertex.setResistance(Double.parseDouble(resistanceTF.getText()));
         
-        vertex.setNext(graph, Integer.parseInt(toTF.getText()) - 1);
-        System.out.println(vertex.getNext().getName());
-        vertex.setPrev(graph, Integer.parseInt(fromTF.getText()) - 1);
+//        vertex.setNext(graph, Integer.parseInt(toTF.getText()) - 1);
+//        System.out.println(vertex.getNext().getName());
+//        vertex.setPrev(graph, Integer.parseInt(fromTF.getText()) - 1);
         closeAction(actionEvent);
     }
 
-    public void setValues(Graph graph, Vertex vertex) {
+    public void setValues(Graph graph, Vertex vertex, AnchorPane anchorPane, Label label) {
+        this.anchorPane = anchorPane;
         this.graph = graph;
         this.vertex = vertex;
+        this.label = label;
+
         parameterTF.setText(String.valueOf(vertex.getParameter()));
         resistanceTF.setText(String.valueOf(vertex.getResistance()));
-        if (vertex.getPrev() != null) {
-            fromTF.setText(String.valueOf(vertex.getPrev().getID() + 1));
-        }
-        if (vertex.getNext() != null) {
-            toTF.setText(String.valueOf(vertex.getNext().getID() + 1));
-        }
+//        if (vertex.getPrev() != null) {
+//            fromTF.setText(String.valueOf(vertex.getPrev().getID() + 1));
+//        }
+//        if (vertex.getNext() != null) {
+//            toTF.setText(String.valueOf(vertex.getNext().getID() + 1));
+//        }
     }
 
     public Vertex getVertex() {
@@ -79,5 +83,18 @@ public class VertexEditDialog extends EditDialog implements Initializable{
             return false;
         }
         return true;
+    }
+
+    public void deleteElement(ActionEvent actionEvent) {
+        anchorPane.getChildren().remove(vertex.getElementView().getImageView());
+        anchorPane.getChildren().remove(label);
+        for (Edge adjacentEdge : vertex.getAdjacentEdges()) {
+            anchorPane.getChildren().remove(adjacentEdge.getEdgeView().getLine());
+            graph.getEdges().remove(adjacentEdge);
+        }
+        graph.getVertices().remove(vertex);
+//        graph.getVertices().remove(graph.getVertices().size());
+
+        closeAction(actionEvent);
     }
 }

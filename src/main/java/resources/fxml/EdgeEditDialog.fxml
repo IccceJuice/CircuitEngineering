@@ -5,13 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EdgeEditDialog">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="182.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EdgeEditDialog">
    <children>
-      <Button fx:id="btnOk" defaultButton="true" layoutX="180.0" layoutY="161.0" mnemonicParsing="false" onAction="#actionSave" text="Ok" />
-      <Button fx:id="btnCancel" cancelButton="true" layoutX="225.0" layoutY="161.0" mnemonicParsing="false" onAction="#closeAction" text="Cancel" />
+      <Button fx:id="btnOk" defaultButton="true" layoutX="180.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionSave" text="Ok" />
+      <Button fx:id="btnCancel" cancelButton="true" layoutX="228.0" layoutY="137.0" mnemonicParsing="false" onAction="#closeAction" text="Cancel" />
       <Label layoutX="56.0" layoutY="37.0" text="From" />
-      <Label layoutX="56.0" layoutY="83.0" text="To" />
+      <Label layoutX="63.0" layoutY="83.0" text="To" />
       <TextField fx:id="txtFrom" layoutX="121.0" layoutY="33.0" promptText="from" />
       <TextField fx:id="txtTo" layoutX="121.0" layoutY="79.0" promptText="to" />
    </children>

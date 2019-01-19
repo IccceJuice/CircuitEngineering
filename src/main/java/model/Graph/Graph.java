@@ -15,4 +15,5 @@ public interface Graph {
     int vertexSize();
     void printCycles();
     void setBatteryID(int batteryID);
+    ArrayList<Edge> getEdges();
 }
