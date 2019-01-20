@@ -26,9 +26,7 @@ public abstract class Vertex {
         this.parameter = parameter;
     }
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
 
     public double getResistance() {
         return resistance;
@@ -123,4 +121,17 @@ public abstract class Vertex {
     public ArrayList<Edge> getAdjacentEdges() {
         return adjacentEdges;
     }
+
+    public void setIncluded(boolean included) {
+        isIncluded = included;
+        if (included) {
+            turnOnElement();
+        } else {
+            turnOffElement();
+        }
+
+    }
+    public abstract void turnOnElement();
+
+    public abstract void turnOffElement();
 }

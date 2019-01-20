@@ -92,7 +92,15 @@ public class VertexEditDialog extends EditDialog implements Initializable{
             anchorPane.getChildren().remove(adjacentEdge.getEdgeView().getLine());
             graph.getEdges().remove(adjacentEdge);
         }
+        if (vertex.getName().equals("Battery")){
+            graph.setBatteryConnected(false);
+        }
         graph.getVertices().remove(vertex);
+        for (int i = 0; i < graph.getVertices().size(); ++i) {
+            graph.getVertices().get(i).setID(i+1);
+            graph.getVertices().get(i).getElementView().setTextLabel("(" + String.valueOf(i+1) + ")");
+        }
+
 //        graph.getVertices().remove(graph.getVertices().size());
 
         closeAction(actionEvent);

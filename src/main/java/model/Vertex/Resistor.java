@@ -35,4 +35,14 @@ public class Resistor extends Vertex {
     public Vertex getBottom() {
         return null;
     }
+
+    @Override
+    public void turnOnElement() {
+
+    }
+
+    @Override
+    public void turnOffElement() {
+
+    }
 }

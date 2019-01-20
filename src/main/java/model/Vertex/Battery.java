@@ -22,6 +22,11 @@ public class Battery extends Vertex {
         this.voltage = voltage;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
     public void draw() {
         System.out.println(name);
     }
@@ -34,6 +39,16 @@ public class Battery extends Vertex {
     @Override
     public Vertex getBottom() {
         return null;
+    }
+
+    @Override
+    public void turnOnElement() {
+
+    }
+
+    @Override
+    public void turnOffElement() {
+
     }
 
 }

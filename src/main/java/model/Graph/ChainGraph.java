@@ -16,6 +16,7 @@ public class ChainGraph implements Graph {
     private ArrayList<Edge> edges;
     private boolean batteryIsConnected;
     private ArrayList<String> catalogCycles = new ArrayList<String>();
+    private ArrayList<ArrayList<Integer>> intCycles = new ArrayList<ArrayList<Integer>>();
     private int batteryID;
 
 
@@ -105,8 +106,10 @@ public class ChainGraph implements Graph {
             if (!flag) {
                 Collections.reverse(cycle);
                 s = cycle.toArray()[0].toString();
-                for (int i = 1; i < cycle.size(); i++)
+                for (int i = 1; i < cycle.size(); i++) {
                     s += "-" + cycle.toArray()[i].toString();
+                }
+                intCycles.add(cycle);
                 catalogCycles.add(s);
             }
             return;
@@ -129,7 +132,8 @@ public class ChainGraph implements Graph {
         }
     }
     private void cyclesSearch() {
-        catalogCycles.removeAll(catalogCycles);
+        catalogCycles.clear();
+        intCycles.clear();
         int[] color = new int[vertices.size()];
 //        for (int i = 0; i < vertices.size(); i++)
 //        {
@@ -141,9 +145,23 @@ public class ChainGraph implements Graph {
 //        }
     }
     public void printCycles(){
-        cyclesSearch();
-        for(int i = 0; i < catalogCycles.size(); ++i){
-            System.out.println(catalogCycles.toArray()[i]);
+        if (batteryIsConnected) {
+            for (Vertex vertex : vertices) {
+                vertex.setIncluded(false);
+            }
+            cyclesSearch();
+            for (int i = 0; i < catalogCycles.size(); ++i) {
+                System.out.println(catalogCycles.toArray()[i]);
+                for (ArrayList<Integer> intCycle : intCycles) {
+                    for (int j = 0; j < intCycle.size(); ++j) {
+                        if (Integer.parseInt(intCycle.toArray()[0].toString()) - 1 != batteryID){
+                            return;
+                        }
+                        vertices.get(Integer.parseInt(intCycle.toArray()[j].toString()) - 1).setIncluded(true);
+                    }
+                    System.out.println();
+                }
+            }
         }
     }
 
@@ -151,5 +169,12 @@ public class ChainGraph implements Graph {
     public void setBatteryID(int batteryID) {
         this.batteryID = batteryID;
     }
-
+    public void turnOffGraph(){
+        for (Vertex vertex : vertices) {
+            vertex.setIncluded(false);
+        }
+    }
+    public void setBatteryConnected(boolean isConnected){
+        batteryIsConnected = isConnected;
+    }
 }

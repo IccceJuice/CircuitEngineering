@@ -31,7 +31,22 @@ public class Voltmeter extends Vertex {
         return null;
     }
 
+    @Override
+    public void turnOnElement() {
+
+    }
+
+    @Override
+    public void turnOffElement() {
+
+    }
+
     public boolean isConnected(){
         return isConnected;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

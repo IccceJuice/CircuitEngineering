@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -98,8 +99,8 @@
                   </Button>
                   <Line endX="18.0" endY="-15.0" layoutX="112.0" layoutY="437.0" startX="-15.0" startY="15.0" strokeWidth="2.0" />
                   <Button fx:id="btnClearAll" layoutX="40.0" layoutY="18.0" mnemonicParsing="false" onAction="#clearAll" text="Clear all" />
-                  <Button layoutX="139.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnOn" text="On" />
                   <Separator layoutY="56.0" prefHeight="9.0" prefWidth="233.0" />
+                  <ToggleButton fx:id="btnOnAction" layoutX="138.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnOnAction" text="On" />
                </children>
         </AnchorPane>
             <AnchorPane fx:id="anchorPane" prefHeight="551.0" prefWidth="378.0" />

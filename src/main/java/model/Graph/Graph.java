@@ -16,4 +16,6 @@ public interface Graph {
     void printCycles();
     void setBatteryID(int batteryID);
     ArrayList<Edge> getEdges();
+    void turnOffGraph();
+    void setBatteryConnected(boolean isConected);
 }

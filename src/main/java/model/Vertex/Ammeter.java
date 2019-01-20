@@ -28,4 +28,19 @@ public class Ammeter extends Vertex {
     public Vertex getBottom() {
         return null;
     }
+
+    @Override
+    public void turnOnElement() {
+
+    }
+
+    @Override
+    public void turnOffElement() {
+
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }

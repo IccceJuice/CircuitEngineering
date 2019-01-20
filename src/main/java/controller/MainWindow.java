@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
@@ -25,7 +26,8 @@ import java.util.ResourceBundle;
 
 public class MainWindow implements Initializable {
 
-
+    @FXML
+    private ToggleButton btnOnAction;
     private Stage mainStage;
     private static Graph graph;
 
@@ -155,6 +157,7 @@ public class MainWindow implements Initializable {
                 Battery battery = new Battery();
                 createElement( battery, viewBattery, vertexEditDialog, vertexEdit);
                 graph.setBatteryID(battery.getID() - 1);
+                graph.setBatteryConnected(true);
                 break;
             case "btnAddResistor":
                 image = new Image("/elements/Res.png");
@@ -205,6 +208,8 @@ public class MainWindow implements Initializable {
 
                 //todo Отрисовка линий
                 edge.setEdgeView(new EdgeView(edge.getFrom().getElementView(), edge.getTo().getElementView()));
+                edge.getFrom().getElementView().addAdjacentLine(edge.getEdgeView());
+                edge.getTo().getElementView().addAdjacentLine(edge.getEdgeView());
                 anchorPane.getChildren().add(edge.getEdgeView().getLine());
                 graph.addEdge(edge);
                 edge.setID(graph.edgeSize());
@@ -254,7 +259,7 @@ public class MainWindow implements Initializable {
         elementView.getImageView().setId("btnEdit");
         elementView.getImageView().setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-                editDialog.setValues(graph, vertex, anchorPane, vertex.getElementView().getLabel() );
+                editDialog.setValues(graph, vertex, anchorPane, vertex.getElementView().getLabel());
                 stage.showAndWait();
                 System.out.println(vertex.getParameter());
             }
@@ -263,8 +268,15 @@ public class MainWindow implements Initializable {
         System.out.println(vertex.getID());
     }
 
-    public void btnOn(ActionEvent actionEvent) {
-        graph.printCycles();
+    public void btnOnAction(ActionEvent actionEvent) {
+        if (btnOnAction.getText().equals("On")) {
+            graph.printCycles();
+            btnOnAction.setText("Off");
+        }
+        else{
+            graph.turnOffGraph();
+            btnOnAction.setText("On");
+        }
     }
 
     public void clearAll(ActionEvent actionEvent) {

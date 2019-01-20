@@ -34,4 +34,15 @@ public class Connector extends Vertex {
     public Vertex getBottom() {
         return bottom;
     }
+
+    @Override
+    public void turnOnElement() {
+
+    }
+
+    @Override
+    public void turnOffElement() {
+
+    }
+
 }

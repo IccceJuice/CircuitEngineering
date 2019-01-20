@@ -5,6 +5,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 
+import java.util.ArrayList;
+
 
 public class ElementView {
     private double imageX = 0;
@@ -14,7 +16,7 @@ public class ElementView {
     private ImageView imageView;
     private Label label;
     private Rotate rotate;
-    private Line adjacentLine;
+    private ArrayList<EdgeView> adjacentLines = new ArrayList<EdgeView>();
 
 
 
@@ -44,12 +46,18 @@ public class ElementView {
             imageView.setTranslateY(imageY + e.getSceneY());
             label.setTranslateX(labelX + e.getSceneX());
             label.setTranslateY(labelY + e.getSceneY());
+            for (EdgeView adjacentLine : adjacentLines) {
+                adjacentLine.calculatePos();
+            }
         });
     }
     public ImageView getImageView() {
         return imageView;
     }
 
+    public void addAdjacentLine(EdgeView edgeView){
+        adjacentLines.add(edgeView);
+    }
 
     public void setTextLabel(String text) {
         label.setText(text);

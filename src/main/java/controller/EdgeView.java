@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class EdgeView {
-    private Line line;
+    private Line line = new Line();
     private double startX = 0;
     private double startY = 0;
     private double endX = 0;
@@ -16,15 +16,9 @@ public class EdgeView {
         this.startEl = startEl;
         this.endEl = endEl;
         calculatePos();
-        line = new Line(startX, startY, endX, endY);
         line.setStrokeWidth(2);
         line.setVisible(true);
         line.setStroke(Color.BLACK);
-        line.setOnMouseClicked(event -> {
-            if(event.getClickCount() == 2){
-
-            }
-        });
     }
 
     public Line getLine() {
@@ -48,8 +42,12 @@ public class EdgeView {
         }
         if (endEl.getRotate() == ElementView.Rotate.horizontal){
             endX = endEl.getImageView().getTranslateX();
-            endY = endEl.getImageView().getTranslateY() + 27;
+            endY = endEl.getImageView().getTranslateY() + 28;
         }
-
+        line.setStartX(startX);
+        line.setStartY(startY);
+        line.setEndX(endX);
+        line.setEndY(endY);
     }
+
 }
