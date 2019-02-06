@@ -82,7 +82,7 @@ public class EdgeEditDialog extends EditDialog implements Initializable{
     }
 
     public void deleteEdge(ActionEvent actionEvent) {
-        anchorPane.getChildren().remove(edge.getEdgeView().getLine());
+        anchorPane.getChildren().removeAll(edge.getEdgeView().getLines());
         edge.getFrom().getAdjacentEdges().remove(edge);
         edge.getTo().getAdjacentEdges().remove(edge);
         graph.getEdges().remove(edge);

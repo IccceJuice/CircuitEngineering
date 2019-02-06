@@ -1,6 +1,5 @@
 package model;
 
-import controller.ElementView;
 import model.Vertex.Vertex;
 import controller.EdgeView;
 

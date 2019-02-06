@@ -8,7 +8,7 @@ import javafx.scene.shape.Line;
 import java.util.ArrayList;
 
 
-public class ElementView {
+public class VertexView {
     private double imageX = 0;
     private double imageY = 0;
     private double labelX = 0;
@@ -20,7 +20,7 @@ public class ElementView {
 
 
 
-    public ElementView(double offsetX, double Y, double offsetY, Image image, String text){
+    public VertexView(double offsetX, double Y, double offsetY, Image image, String text){
         imageView = new ImageView(image);
         label = new Label(text);
         imageView.setFitWidth(56);
@@ -48,6 +48,7 @@ public class ElementView {
             label.setTranslateY(labelY + e.getSceneY());
             for (EdgeView adjacentLine : adjacentLines) {
                 adjacentLine.calculatePos();
+                adjacentLine.calcHigh();
             }
         });
     }

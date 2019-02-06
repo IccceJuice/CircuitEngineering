@@ -13,7 +13,6 @@ import model.Graph.Graph;
 import model.Vertex.Vertex;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class VertexEditDialog extends EditDialog implements Initializable{
@@ -86,10 +85,10 @@ public class VertexEditDialog extends EditDialog implements Initializable{
     }
 
     public void deleteElement(ActionEvent actionEvent) {
-        anchorPane.getChildren().remove(vertex.getElementView().getImageView());
+        anchorPane.getChildren().remove(vertex.getVertexView().getImageView());
         anchorPane.getChildren().remove(label);
         for (Edge adjacentEdge : vertex.getAdjacentEdges()) {
-            anchorPane.getChildren().remove(adjacentEdge.getEdgeView().getLine());
+            anchorPane.getChildren().removeAll(adjacentEdge.getEdgeView().getLines());
             graph.getEdges().remove(adjacentEdge);
         }
         if (vertex.getName().equals("Battery")){
@@ -98,10 +97,8 @@ public class VertexEditDialog extends EditDialog implements Initializable{
         graph.getVertices().remove(vertex);
         for (int i = 0; i < graph.getVertices().size(); ++i) {
             graph.getVertices().get(i).setID(i+1);
-            graph.getVertices().get(i).getElementView().setTextLabel("(" + String.valueOf(i+1) + ")");
+            graph.getVertices().get(i).getVertexView().setTextLabel("(" + String.valueOf(i+1) + ")");
         }
-
-//        graph.getVertices().remove(graph.getVertices().size());
 
         closeAction(actionEvent);
     }

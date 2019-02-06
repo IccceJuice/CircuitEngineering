@@ -87,8 +87,8 @@ public class ChainGraph implements Graph {
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }
-    private void DFScycle(int u, int endV, ArrayList<Edge> E, int[] color, int unavailableEdge, ArrayList<Integer> cycle) {
-        //если u == endV, то эту вершину перекрашивать не нужно, иначе мы в нее не вернемся, а вернуться необходимо
+    private void DFScycle(int u, int endV, ArrayList<Edge> E, int[] color,
+                          int unavailableEdge, ArrayList<Integer> cycle) {
         if (u != endV)
             color[u] = 2;
         else if (cycle.size() >= 2) {
@@ -96,7 +96,7 @@ public class ChainGraph implements Graph {
             String s = cycle.toArray()[0].toString();
             for (int i = 1; i < cycle.size(); i++)
                 s += "-" + cycle.toArray()[i].toString();
-            boolean flag = false; //есть ли палиндром для этого цикла графа в List<string> catalogCycles?
+            boolean flag = false;
             for (int i = 0; i < catalogCycles.size(); i++) {
                 if (catalogCycles.toArray()[i].toString().equals(s)) {
                     flag = true;

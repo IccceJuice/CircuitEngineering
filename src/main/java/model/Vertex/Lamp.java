@@ -31,11 +31,11 @@ public class Lamp extends Vertex {
     }
 
     public void turnOnElement(){
-        this.getElementView().getImageView().setImage(new Image("/elements/lampOn.png"));
+        this.getVertexView().getImageView().setImage(new Image("/elements/lampOn.png"));
     }
 
     public void turnOffElement(){
-        this.getElementView().getImageView().setImage(new Image("/elements/lampOff.png"));
+        this.getVertexView().getImageView().setImage(new Image("/elements/lampOff.png"));
     }
 
 }

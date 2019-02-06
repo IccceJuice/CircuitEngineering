@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Edge;
@@ -152,8 +151,8 @@ public class MainWindow implements Initializable {
         switch (clickedButton.getId()) {
             case "btnAddBattery":
                 image = new Image("/elements/Battery.png");
-                ElementView viewBattery = new ElementView(47, 50, 20, image, "");
-                viewBattery.setRotate(ElementView.Rotate.vertical);
+                VertexView viewBattery = new VertexView(47, 50, 20, image, "");
+                viewBattery.setRotate(VertexView.Rotate.vertical);
                 Battery battery = new Battery();
                 createElement( battery, viewBattery, vertexEditDialog, vertexEdit);
                 graph.setBatteryID(battery.getID() - 1);
@@ -161,36 +160,36 @@ public class MainWindow implements Initializable {
                 break;
             case "btnAddResistor":
                 image = new Image("/elements/Res.png");
-                ElementView viewResistor = new ElementView(15, 140, 35, image, "");
-                viewResistor.setRotate(ElementView.Rotate.horizontal);
+                VertexView viewResistor = new VertexView(15, 140, 35, image, "");
+                viewResistor.setRotate(VertexView.Rotate.horizontal);
                 Resistor resistor = new Resistor();
                 createElement(resistor, viewResistor, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddLamp":
                 image = new Image("/elements/lampOff.png");
-                ElementView viewLamp = new ElementView(16, 230, 42, image, "");
-                viewLamp.setRotate(ElementView.Rotate.horizontal);
+                VertexView viewLamp = new VertexView(16, 230, 42, image, "");
+                viewLamp.setRotate(VertexView.Rotate.horizontal);
                 Lamp lamp = new Lamp();
                 createElement(lamp, viewLamp, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddAmmeter":
                 image = new Image("/elements/Ammeter.png");
-                ElementView viewAmmeter = new ElementView(15, 320, 35, image, "");
-                viewAmmeter.setRotate(ElementView.Rotate.horizontal);
+                VertexView viewAmmeter = new VertexView(15, 320, 35, image, "");
+                viewAmmeter.setRotate(VertexView.Rotate.horizontal);
                 Ammeter ammeter = new Ammeter();
                 createElement(ammeter, viewAmmeter, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddVoltmeter":
                 image = new Image("/elements/Voltmeter.png");
-                ElementView viewVoltmeter = new ElementView(15, 410, 35, image, "");
-                viewVoltmeter.setRotate(ElementView.Rotate.horizontal);
+                VertexView viewVoltmeter = new VertexView(15, 410, 35, image, "");
+                viewVoltmeter.setRotate(VertexView.Rotate.horizontal);
                 Voltmeter voltmeter = new Voltmeter();
                 createElement(voltmeter, viewVoltmeter, vertexEditDialog, vertexEdit);
                 break;
             case "btnAddConnector":
                 image = new Image("/elements/dot.png");
-                ElementView viewPoint = new ElementView(15, 500, 35, image, "");
-                viewPoint.setRotate(ElementView.Rotate.horizontal);
+                VertexView viewPoint = new VertexView(15, 500, 35, image, "");
+                viewPoint.setRotate(VertexView.Rotate.horizontal);
                 viewPoint.getImageView().setFitHeight(10);
                 viewPoint.getImageView().setFitWidth(10);
                 Connector connector = new Connector();
@@ -207,19 +206,20 @@ public class MainWindow implements Initializable {
                 edge.getTo().addAdjacentEdge(edge);
 
                 //todo Отрисовка линий
-                edge.setEdgeView(new EdgeView(edge.getFrom().getElementView(), edge.getTo().getElementView()));
-                edge.getFrom().getElementView().addAdjacentLine(edge.getEdgeView());
-                edge.getTo().getElementView().addAdjacentLine(edge.getEdgeView());
-                anchorPane.getChildren().add(edge.getEdgeView().getLine());
+                edge.setEdgeView(new EdgeView(edge.getFrom().getVertexView(), edge.getTo().getVertexView()));
+                edge.getFrom().getVertexView().addAdjacentLine(edge.getEdgeView());
+                edge.getTo().getVertexView().addAdjacentLine(edge.getEdgeView());
+                anchorPane.getChildren().addAll(edge.getEdgeView().getLines());
                 graph.addEdge(edge);
                 edge.setID(graph.edgeSize());
-                edge.getEdgeView().getLine().setOnMouseClicked(event -> {
-                    if (event.getClickCount() == 2) {
-                        deleteEdgeDialog.setValues(graph, edge, anchorPane);
-                        deleteEdge.showAndWait();
-//                        System.out.println(vertex.getParameter());
-                    }
-                });
+                for (Line o : edge.getEdgeView().getLines()) {
+                    o.setOnMouseClicked(event -> {
+                        if (event.getClickCount() == 2) {
+                            deleteEdgeDialog.setValues(graph, edge, anchorPane);
+                            deleteEdge.showAndWait();
+                        }
+                    });
+                }
                 break;
         }
     }
@@ -249,17 +249,17 @@ public class MainWindow implements Initializable {
         this.mainStage = mainStage;
     }
 
-    private void createElement(Vertex vertex, ElementView elementView, EditDialog editDialog, Stage stage){
-        vertex.setElementView(elementView);
+    private void createElement(Vertex vertex, VertexView vertexView, EditDialog editDialog, Stage stage){
+        vertex.setVertexView(vertexView);
         graph.addVertex(vertex);
         vertex.setID(graph.vertexSize());
-        elementView.setTextLabel("(" + graph.vertexSize() + ")");
-        anchorPane.getChildren().add(elementView.getImageView());
-        anchorPane.getChildren().add(elementView.getLabel());
-        elementView.getImageView().setId("btnEdit");
-        elementView.getImageView().setOnMouseClicked(event -> {
+        vertexView.setTextLabel("(" + graph.vertexSize() + ")");
+        anchorPane.getChildren().add(vertexView.getImageView());
+        anchorPane.getChildren().add(vertexView.getLabel());
+        vertexView.getImageView().setId("btnEdit");
+        vertexView.getImageView().setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-                editDialog.setValues(graph, vertex, anchorPane, vertex.getElementView().getLabel());
+                editDialog.setValues(graph, vertex, anchorPane, vertex.getVertexView().getLabel());
                 stage.showAndWait();
                 System.out.println(vertex.getParameter());
             }

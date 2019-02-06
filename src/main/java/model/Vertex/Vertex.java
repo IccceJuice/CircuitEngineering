@@ -1,6 +1,6 @@
 package model.Vertex;
 
-import controller.ElementView;
+import controller.VertexView;
 import model.Edge;
 import model.Graph.Graph;
 
@@ -15,7 +15,7 @@ public abstract class Vertex {
     private Vertex next;
     private Vertex prev;
     public String name;
-    private ElementView elementView;
+    private VertexView vertexView;
     private int ID = -1;
 
     public double getParameter() {
@@ -102,12 +102,12 @@ public abstract class Vertex {
 //        return numberPlusAdjacent;
 //    }
 
-    public ElementView getElementView() {
-        return elementView;
+    public VertexView getVertexView() {
+        return vertexView;
     }
 
-    public void setElementView(ElementView elementView) {
-        this.elementView = elementView;
+    public void setVertexView(VertexView vertexView) {
+        this.vertexView = vertexView;
     }
 
     public abstract Vertex getTop();
