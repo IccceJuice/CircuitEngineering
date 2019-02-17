@@ -151,7 +151,7 @@ public class ChainGraph implements Graph {
             }
             cyclesSearch();
             for (int i = 0; i < catalogCycles.size(); ++i) {
-                System.out.println(catalogCycles.toArray()[i]);
+                System.out.print(catalogCycles.toArray()[i]);
                 for (ArrayList<Integer> intCycle : intCycles) {
                     for (int j = 0; j < intCycle.size(); ++j) {
                         if (Integer.parseInt(intCycle.toArray()[0].toString()) - 1 != batteryID){

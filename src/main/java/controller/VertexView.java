@@ -48,7 +48,6 @@ public class VertexView {
             label.setTranslateY(labelY + e.getSceneY());
             for (EdgeView adjacentLine : adjacentLines) {
                 adjacentLine.calculatePos();
-                adjacentLine.calcHigh();
             }
         });
     }

@@ -15,7 +15,7 @@ public class EdgeView {
     private double endY = 0;
     private VertexView startEl;
     private VertexView endEl;
-    private ArrayList<Line> lines = new ArrayList<>();
+    private ArrayList<Line> lines = new ArrayList<Line>();
 
     EdgeView(VertexView startEl, VertexView endEl) {
         this.startEl = startEl;
@@ -38,7 +38,7 @@ public class EdgeView {
 
     public void calculatePos(){
         if (startEl.getRotate() == VertexView.Rotate.vertical){
-            startX = startEl.getImageView().getTranslateX() + 28;
+            startX = startEl.getImageView().getTranslateX() + 27;
             startY = startEl.getImageView().getTranslateY();
         }
 
@@ -48,7 +48,7 @@ public class EdgeView {
         }
 
         if (endEl.getRotate() == VertexView.Rotate.vertical){
-            endX = endEl.getImageView().getTranslateX() + 28;
+            endX = endEl.getImageView().getTranslateX() + 27;
             endY = endEl.getImageView().getTranslateY() + 56;
         }
         if (endEl.getRotate() == VertexView.Rotate.horizontal){
